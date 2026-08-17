@@ -1,113 +1,113 @@
 # Command Code for Copilot Chat
 
-Pick Command Code models from the Copilot Chat model picker — and keep everything else Copilot already gives you.
+Access Command Code models directly inside Copilot Chat — no new UI, no workflow changes.
 
-**Love Command Code's price-performance but don't want to give up GitHub Copilot's agent mode, tool calling, and polished UI?** This extension drops every Command Code model straight into the Copilot Chat model selector — with **vision**, **thinking mode**, and your own API key.
+**Already enjoying Command Code's pricing but missing Copilot's agent capabilities, tool integrations, and familiar interface?** This extension brings the entire Command Code model lineup into the Copilot Chat model selector, complete with **image understanding**, **adjustable reasoning depth**, and secure API key management.
 
-## Why this extension?
+## Why use this?
 
-- **Don't replace Copilot — power it up.** No new sidebar, no new chat UI to learn. Just a new set of models in the picker you already use.
-- **Agent mode, tool calling, instructions, MCP, skills — all of it still works.** Copilot's entire stack, now running on any Command Code model.
-- **Native vision.** Command Code serves Claude, GPT, Gemini, Kimi, Qwen, and Grok models with native image input — no proxy required.
-- **BYOK, pay Command Code directly.** Your API key, your bill, your rate limits. Stored in the OS keychain, never on disk.
+- **Extend Copilot, don't replace it.** There's no extra sidebar or interface to figure out — just additional models appearing in the dropdown you already know.
+- **Full Copilot feature support.** Agent workflows, tool execution, custom instructions, MCP servers, and skills all continue to work seamlessly on Command Code models.
+- **Direct image understanding.** Models from Claude, GPT, Gemini, Kimi, Qwen, and Grok handle image inputs natively through Command Code — no intermediate proxy or re-encoding step.
+- **Bring your own key.** You control the billing, rate limits, and account. Credentials are persisted in the OS keychain, never written to config files or version control.
 
-## Features
+## Capabilities
 
-### Every Command Code model in the model picker
+### Complete model catalog in the picker
 
-The full Command Code Provider catalog is exposed alongside GPT-4o, Claude, and friends in Copilot Chat's model selector — Claude Opus 5, Claude Sonnet 5, GPT-5.5/5.6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash, Kimi K3, Qwen 3.8 Max, GLM-5.3, Grok 4.6, and dozens more. Switch models mid-chat without losing history.
+Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5, Claude Sonnet 5, GPT-5.5/5.6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash, Kimi K3, Qwen 3.8 Max, GLM-5.3, Grok 4.6, and many others. You can swap models in the middle of a conversation without resetting context.
 
-### Thinking effort per model
+### Per-model reasoning control
 
-Each reasoning-capable model exposes a **Thinking effort** dropdown directly in the Copilot picker:
+Models that support extended reasoning display a **Thinking effort** selector right inside the Copilot interface:
 
-- `Off` — disable thinking for fastest responses
-- `Light` — light reasoning for quick edits
-- `Standard` — recommended for everyday use
-- `Deep` — deep reasoning for complex tasks
+- `Off` — skip reasoning entirely for maximum speed
+- `Light` — minimal reasoning suited to quick adjustments
+- `Standard` — balanced reasoning for general-purpose use
+- `Deep` — thorough reasoning aimed at challenging problems
 
-The setting is sent to the upstream as `reasoning_effort` and applies only when the model is selected — no global toggle to forget about.
+This preference is forwarded to the upstream provider as `reasoning_effort` and scoped to the currently selected model — no separate global configuration needed.
 
-### Native vision input
+### Image input support
 
-Vision-capable models (Claude Opus/Sonnet 5, GPT-5.4+, Gemini, Kimi K3, Qwen 3.7+, Grok 4.5, and more) receive image attachments directly — no proxy, no description round-trip, no latency tax.
+Models with vision capabilities (Claude Opus/Sonnet 5, GPT-5.4+, Gemini, Kimi K3, Qwen 3.7+, Grok 4.5, and others) accept image attachments directly in the conversation — no encoding workaround, no added round-trip delay.
 
 <p align="center">
   <img src="resources/screenshots/picker.png" alt="Command Code models in the Copilot Chat model picker with per-model Thinking effort dropdowns" width="800">
 </p>
 
-### Inherits every Copilot capability
+### Full Copilot integration
 
-Because this plugs into Copilot's native provider API, you get the full stack for free:
+Since this extension registers through Copilot's built-in provider interface, every native capability remains available:
 
-- **Agent mode** — autonomous multi-step tasks
-- **Tool calling** — file edits, terminal, workspace search, Git, tests
-- **Instructions & skills** — all your `.instructions.md`, `AGENTS.md`, and skills just work
-- **Zero-data-retention** — opt in with one setting; requests route only through ZDR-capable upstreams
+- **Agent mode** — handle complex, multi-step workflows autonomously
+- **Tool calling** — edit files, run terminal commands, search the workspace, interact with Git, execute tests
+- **Instructions & skills** — your `.instructions.md`, `AGENTS.md`, and custom skills continue to function normally
+- **Zero-data-retention** — enable with a single toggle; traffic is directed exclusively through ZDR-compliant endpoints
 
-### Secure by default
+### Credential security
 
-API key lives in VS Code's `SecretStorage` (OS keychain on Windows / macOS / Linux). Never in `settings.json`, never in your Git history.
+API keys are stored using VS Code's `SecretStorage`, which leverages the operating system's native keychain (Windows Credential Manager, macOS Keychain, Linux Secret Service). Keys are never persisted in `settings.json` or exposed through version control.
 
-### Zero runtime dependencies
+### No added dependencies
 
-Pure VS Code API + Node.js built-ins. No Python, no Docker, no local proxy server.
+Built entirely on VS Code's extension API and Node.js standard library. There's no reliance on Python runtimes, Docker containers, or locally hosted proxy servers.
 
 ## Getting Started
 
-### Prerequisites
+### What you need
 
-- VS Code 1.116 or later (this extension relies on the same Copilot Chat provider API surface as upstream)
-- GitHub Copilot subscription (Free / Pro / Enterprise — the free tier works)
-- Command Code subscription that includes API access (GOAT, Pro, Max, Team, or Provider) — see [pricing](https://commandcode.ai/docs/resources/pricing-limits)
+- VS Code version 1.116 or newer (the extension uses the same provider API surface that powers Copilot Chat)
+- An active GitHub Copilot subscription (Free, Pro, or Enterprise tiers all work — including the free plan)
+- A Command Code subscription with API access enabled (GOAT, Pro, Max, Team, or Provider tiers) — details on the [pricing page](https://commandcode.ai/docs/resources/pricing-limits)
 
-### Installation
+### Install
 
-1. **VS Code** — install from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Tyrannmisu.commandcode-copilot-provider) (once published).
-2. **Editors on Open VSX** — install from [Open VSX](https://open-vsx.org/extension/Tyrannmisu/commandcode-copilot-provider) (once published).
+1. **VS Code** — grab it from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Tyrannmisu.commandcode-copilot-provider) (once published).
+2. **Other editors on Open VSX** — available on [Open VSX](https://open-vsx.org/extension/Tyrannmisu/commandcode-copilot-provider) (once published).
 
-### Usage
+### First steps
 
-1. Run **Command Code: Set API Key** from the Command Palette (`Ctrl+Shift+P`).
-2. Paste your Command Code API key (from [Studio](https://commandcode.ai/studio/)).
-3. Open Copilot Chat, click the model picker, pick any **Command Code** model.
-4. Pick a **Thinking effort** from the dropdown next to the model name.
-5. Chat away.
+1. Open the Command Palette (`Ctrl+Shift+P`) and run **Command Code: Set API Key**.
+2. Enter your Command Code API key (generate one at [Studio](https://commandcode.ai/studio/)).
+3. Launch Copilot Chat, open the model dropdown, and select a **Command Code** model.
+4. Optionally adjust the **Thinking effort** level via the control beside the model name.
+5. Start chatting.
 
-## Models
+## Available models
 
-The provider ships the full Command Code catalog, grouped by company. The most popular picks:
+The extension surfaces the full Command Code provider lineup, organized by vendor. Here are some highlights:
 
-| Model                | Thinking effort               | Vision | Best for                                |
-| -------------------- | ----------------------------- | ------ | --------------------------------------- |
-| **Claude Sonnet 5**  | Off / Light / Standard / Deep | ✅     | Best combo of speed & intelligence      |
-| **Claude Opus 5**    | Off / Light / Standard / Deep | ✅     | Most intelligent Opus                   |
-| **GPT-5.5**          | Off / Light / Standard / Deep | ✅     | Latest OpenAI frontier                  |
-| **Gemini 3.7 Flash** | Off / Light / Standard / Deep | ✅     | Coding & agentic workflows              |
-| **DeepSeek V4 Pro**  | Off / Light / Standard / Deep | —      | Hybrid-attention long-context reasoning |
-| **Qwen 3.7 Plus**    | Off / Light / Standard / Deep | ✅     | Agentic coding at lower cost            |
-| **Kimi K3**          | Off / Light / Standard / Deep | ✅     | 1M context knowledge work               |
-| **Grok 4.5**         | Off / Light / Standard / Deep | ✅     | Smartest xAI for coding                 |
-| **GLM-5.3**          | Off / Light / Standard / Deep | —      | Frontier coding with 1M context         |
+| Model                | Reasoning levels              | Vision | Ideal use case                              |
+| -------------------- | ----------------------------- | ------ | ------------------------------------------- |
+| **Claude Sonnet 5**  | Off / Light / Standard / Deep | ✅     | Strong balance of speed and capability      |
+| **Claude Opus 5**    | Off / Light / Standard / Deep | ✅     | Highest-capability Anthropic model          |
+| **GPT-5.6-Luna**     | Off / Light / Standard / Deep | ✅     | Optimized for cost-sensitive workloads      |
+| **Gemini 3.7 Flash** | Off / Light / Standard / Deep | ✅     | Fast coding and agent-oriented tasks        |
+| **DeepSeek V4 Pro**  | Off / Light / Standard / Deep | —      | Long-context reasoning via hybrid attention |
+| **Qwen 3.7 Plus**    | Off / Light / Standard / Deep | ✅     | Cost-effective agentic development          |
+| **Kimi K3**          | Off / Light / Standard / Deep | ✅     | 1M-token context for knowledge-heavy work   |
+| **Grok 4.5**         | Off / Light / Standard / Deep | ✅     | xAI's top model for development tasks       |
+| **GLM-5.3**          | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context          |
 
-The full list (50+ models across 17 providers) is in [`src/models.ts`](src/models.ts).
+Over 50 models from 17 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts).
 
-## Settings
+## Extension settings
 
-| Setting                                | Default                                  | Description                                                                                           |
-| -------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `commandcode-copilot.baseUrl`          | `https://api.commandcode.ai/provider/v1` | API endpoint — change for self-hosted / proxied deployments                                           |
-| `commandcode-copilot.maxTokens`        | `0`                                      | Max output tokens (`0` = no limit). Useful for cost control                                           |
-| `commandcode-copilot.zdr`              | `false`                                  | Send `x-cmdc-zdr: 1` on every request to enforce zero-data-retention routing                          |
-| `commandcode-copilot.modelIdOverrides` | `{}`                                     | Map VS Code model ids to different API ids (for mirrors that rename models)                           |
-| `commandcode-copilot.modelBlacklist`   | `[]`                                     | Hide specific model ids from the picker                                                               |
-| `commandcode-copilot.maxContextTokens` | `0`                                      | Override the context window reported to Copilot (`0` = use model default)                             |
-| `commandcode-copilot.apiKey`           | _(unset)_                                | API key fallback (settings-based; SecretStorage wins)                                                 |
-| `commandcode-copilot.debugMode`        | `minimal`                                | Diagnostic verbosity: `minimal` (silent), `metadata` (per-request summary), `verbose` (full payloads) |
+| Setting                                | Default                                  | Purpose                                                                                             |
+| -------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `commandcode-copilot.baseUrl`          | `https://api.commandcode.ai/provider/v1` | Base URL for API calls — override for self-hosted setups or reverse proxies                         |
+| `commandcode-copilot.maxTokens`        | `0`                                      | Cap on output tokens per response (`0` = unlimited). Handy for managing costs                       |
+| `commandcode-copilot.zdr`              | `false`                                  | Attach `x-cmdc-zdr: 1` header to enforce zero-data-retention endpoint routing                       |
+| `commandcode-copilot.modelIdOverrides` | `{}`                                     | Remap VS Code model identifiers to alternate API identifiers (useful for mirrored deployments)      |
+| `commandcode-copilot.modelBlacklist`   | `[]`                                     | Exclude specific model identifiers from appearing in the selector                                   |
+| `commandcode-copilot.maxContextTokens` | `0`                                      | Override the context window size reported to Copilot (`0` = keep the model's native default)        |
+| `commandcode-copilot.apiKey`           | _(unset)_                                | Fallback API key location (settings-based; SecretStorage takes precedence when both are set)        |
+| `commandcode-copilot.debugMode`        | `minimal`                                | Logging detail: `minimal` (quiet), `metadata` (per-call summary), `verbose` (full request/response) |
 
-Thinking effort is configured from Copilot Chat's model picker for each Command Code model.
+Reasoning depth is adjusted per model through the Copilot Chat model selector.
 
-Example `settings.json` for a mirror that renames models:
+Sample `settings.json` for a mirrored endpoint that uses alternate model names:
 
 ```json
 {
@@ -119,7 +119,7 @@ Example `settings.json` for a mirror that renames models:
 }
 ```
 
-Example `settings.json` for zero-data-retention:
+Sample `settings.json` with zero-data-retention enabled:
 
 ```json
 {
