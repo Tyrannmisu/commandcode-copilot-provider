@@ -1,0 +1,193 @@
+{
+    "name": "commandcode-copilot-provider",
+    "displayName": "Command Code for Copilot Chat",
+    "description": "Pick Command Code models from the Copilot Chat model picker. Vision, thinking mode, agent tools — zero config, BYOK.",
+    "icon": "resources/icon.png",
+    "version": "0.1.0",
+    "publisher": "Tyrannmisu",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Tyrannmisu/commandcode-copilot-provider"
+    },
+    "engines": {
+        "vscode": "^1.116.0",
+        "node": ">=24"
+    },
+    "categories": [
+        "AI",
+        "Chat",
+        "Programming Languages"
+    ],
+    "keywords": [
+        "commandcode",
+        "command code",
+        "copilot",
+        "github copilot",
+        "copilot chat",
+        "vision",
+        "byok",
+        "language model",
+        "thinking",
+        "reasoning",
+        "ai",
+        "chat"
+    ],
+    "activationEvents": [
+        "onUri",
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languageModelChatProviders": [
+            {
+                "vendor": "commandcode",
+                "displayName": "Command Code"
+            }
+        ],
+        "commands": [
+            {
+                "command": "commandcode-copilot.setApiKey",
+                "title": "%commandcode-copilot.command.setApiKey%"
+            },
+            {
+                "command": "commandcode-copilot.getApiKey",
+                "title": "%commandcode-copilot.command.getApiKey%"
+            },
+            {
+                "command": "commandcode-copilot.clearApiKey",
+                "title": "%commandcode-copilot.command.clearApiKey%"
+            },
+            {
+                "command": "commandcode-copilot.openSettings",
+                "title": "%commandcode-copilot.command.openSettings%"
+            },
+            {
+                "command": "commandcode-copilot.showLogs",
+                "title": "%commandcode-copilot.command.showLogs%"
+            },
+            {
+                "command": "commandcode-copilot.refreshModels",
+                "title": "%commandcode-copilot.command.refreshModels%"
+            }
+        ],
+        "walkthroughs": [
+            {
+                "id": "commandcodeGettingStarted",
+                "title": "%commandcode-copilot.walkthrough.title%",
+                "description": "%commandcode-copilot.walkthrough.description%",
+                "steps": [
+                    {
+                        "id": "setApiKey",
+                        "title": "%commandcode-copilot.walkthrough.setApiKey.title%",
+                        "description": "%commandcode-copilot.walkthrough.setApiKey.description%",
+                        "media": {
+                            "markdown": "resources/walkthrough/set-api-key.md"
+                        },
+                        "completionEvents": [
+                            "onCommand:commandcode-copilot.setApiKey"
+                        ]
+                    },
+                    {
+                        "id": "showModels",
+                        "title": "%commandcode-copilot.walkthrough.showModels.title%",
+                        "description": "%commandcode-copilot.walkthrough.showModels.description%",
+                        "media": {
+                            "markdown": "resources/walkthrough/show-models.md"
+                        }
+                    },
+                    {
+                        "id": "advancedSettings",
+                        "title": "%commandcode-copilot.walkthrough.advancedSettings.title%",
+                        "description": "%commandcode-copilot.walkthrough.advancedSettings.description%",
+                        "media": {
+                            "markdown": "resources/walkthrough/advanced-settings.md"
+                        }
+                    }
+                ]
+            }
+        ],
+        "configuration": {
+            "title": "%commandcode-copilot.config.title%",
+            "properties": {
+                "commandcode-copilot.baseUrl": {
+                    "type": "string",
+                    "default": "https://api.commandcode.ai/provider/v1",
+                    "description": "%commandcode-copilot.config.baseUrl.description%"
+                },
+                "commandcode-copilot.maxTokens": {
+                    "type": "number",
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "%commandcode-copilot.config.maxTokens.description%"
+                },
+                "commandcode-copilot.zdr": {
+                    "type": "boolean",
+                    "default": false,
+                    "markdownDescription": "%commandcode-copilot.config.zdr.description%"
+                },
+                "commandcode-copilot.apiKey": {
+                    "type": "string",
+                    "description": "%commandcode-copilot.config.apiKey.description%"
+                },
+                "commandcode-copilot.modelIdOverrides": {
+                    "type": "object",
+                    "default": {},
+                    "description": "%commandcode-copilot.config.modelIdOverrides.description%"
+                },
+                "commandcode-copilot.modelBlacklist": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "%commandcode-copilot.config.modelBlacklist.description%"
+                },
+                "commandcode-copilot.maxContextTokens": {
+                    "type": "number",
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "%commandcode-copilot.config.maxContextTokens.description%"
+                },
+                "commandcode-copilot.debugMode": {
+                    "type": "string",
+                    "default": "minimal",
+                    "enum": [
+                        "minimal",
+                        "metadata",
+                        "verbose"
+                    ],
+                    "enumItemLabels": [
+                        "%commandcode-copilot.config.debugMode.minimal.label%",
+                        "%commandcode-copilot.config.debugMode.metadata.label%",
+                        "%commandcode-copilot.config.debugMode.verbose.label%"
+                    ],
+                    "markdownEnumDescriptions": [
+                        "%commandcode-copilot.config.debugMode.minimal.description%",
+                        "%commandcode-copilot.config.debugMode.metadata.description%",
+                        "%commandcode-copilot.config.debugMode.verbose.description%"
+                    ],
+                    "markdownDescription": "%commandcode-copilot.config.debugMode.description%"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "clean": "node -e \"require('node:fs').rmSync('out', { recursive: true, force: true, maxRetries: process.platform === 'win32' ? 10 : 0 })\"",
+        "vscode:prepublish": "npm run compile",
+        "compile": "npm run clean && tsc -p ./",
+        "watch": "npm run clean && tsc -watch -p ./",
+        "lint": "oxlint",
+        "format": "oxfmt --write src/",
+        "format:check": "oxfmt --check src/",
+        "package": "vsce package -o dist/"
+    },
+    "devDependencies": {
+        "@types/node": "^25.6.0",
+        "@types/vscode": "^1.116.0",
+        "@vscode/vsce": "^3.9.1",
+        "oxfmt": "^0.47.0",
+        "oxlint": "^1.62.0",
+        "typescript": "^6.0.3"
+    }
+}
