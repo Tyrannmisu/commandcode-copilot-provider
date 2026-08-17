@@ -90,7 +90,7 @@ The provider ships the full Command Code catalog, grouped by company. The most p
 | **Grok 4.5**         | Off / Light / Standard / Deep | ✅     | Smartest xAI for coding                 |
 | **GLM-5.3**          | Off / Light / Standard / Deep | —      | Frontier coding with 1M context         |
 
-The full list (40+ models across 14 providers) is in [`src/models.ts`](src/models.ts).
+The full list (50+ models across 17 providers) is in [`src/models.ts`](src/models.ts).
 
 ## Settings
 
