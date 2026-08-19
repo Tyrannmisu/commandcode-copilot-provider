@@ -95,6 +95,17 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'Alibaba',
 	},
+	{
+		id: 'Qwen/Qwen3.8-27B',
+		name: 'Qwen 3.8 27B',
+		family: FAMILY,
+		version: '3.8',
+		detail: 'cost-efficient 27B vision & reasoning',
+		maxInputTokens: 262000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Alibaba',
+	},
 
 	// ---- Anthropic ----
 	{

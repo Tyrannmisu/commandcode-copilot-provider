@@ -28,13 +28,13 @@ Models that support extended reasoning display a **Thinking effort** selector ri
 
 This preference is forwarded to the upstream provider as `reasoning_effort` and scoped to the currently selected model — no separate global configuration needed.
 
-### Image input support
-
-Models with vision capabilities (Claude Opus/Sonnet 5, GPT-5.4+, Gemini, Kimi K3, Qwen 3.7+, Grok 4.5, and others) accept image attachments directly in the conversation — no encoding workaround, no added round-trip delay.
-
 <p align="center">
   <img src="resources/screenshots/picker.png" alt="Command Code models in the Copilot Chat model picker with per-model Thinking effort dropdowns" width="800">
 </p>
+
+### Image input support
+
+Models with vision capabilities (Claude Opus/Sonnet 5, GPT-5.4+, Gemini, Kimi K3, Qwen 3.7+, Grok 4.5, and others) accept image attachments directly in the conversation — no encoding workaround, no added round-trip delay.
 
 ### Full Copilot integration
 

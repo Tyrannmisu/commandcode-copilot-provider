@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 (2026-08-19)
+
+### Features
+
+- Added `Qwen/Qwen3.8-27B` to the model catalog (262K context, vision, reasoning).
+
 ## 0.1.0 (2026-08-17)
 
 ### Features
