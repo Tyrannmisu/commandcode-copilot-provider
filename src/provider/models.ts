@@ -6,7 +6,7 @@ import type {
 	ThinkingCapability,
 	ThinkingEffort,
 } from '../types';
-import { getMaxContextTokensOverride } from '../config';
+import { getMaxContextTokensOverride, resolveModelDetailStyle } from '../config';
 
 /**
  * Non-public Copilot Chat API surface.
@@ -56,7 +56,7 @@ export function toChatInfo(
 		name: m.name,
 		family: m.family,
 		version: m.version,
-		detail: hasApiKey ? m.detail : t('auth.apiKeyRequiredDetail'),
+		detail: hasApiKey ? formatModelDetail(m) : t('auth.apiKeyRequiredDetail'),
 		tooltip: hasApiKey ? m.detail : t('auth.apiKeyRequiredDetail'),
 		statusIcon: hasApiKey ? undefined : new vscode.ThemeIcon('warning'),
 		maxInputTokens,
@@ -71,6 +71,37 @@ export function toChatInfo(
 			? { configurationSchema: buildThinkingEffortSchema(thinkingCapability) }
 			: {}),
 	};
+}
+
+/**
+ * Build the text rendered alongside the model name in the Copilot Chat
+ * picker. On Linux the picker lays `name` and `detail` out on a single line
+ * and gives the detail most of the width, so the long marketing sentence in
+ * `ModelDefinition.detail` collapses the name to a few characters.
+ *
+ * The `modelDetailStyle` setting controls what ends up here:
+ *   - `full`    → the full description (current behavior)
+ *   - `compact` → short capability summary such as "Vision · Thinking"
+ *   - `hidden`  → no inline text (name only); the full text stays in the tooltip
+ *   - `auto`    → `compact` on Linux, `full` elsewhere
+ */
+function formatModelDetail(m: ModelDefinition): string {
+	const style = resolveModelDetailStyle();
+	if (style === 'hidden') {
+		return '';
+	}
+	if (style === 'full') {
+		return m.detail;
+	}
+
+	const parts: string[] = [];
+	if (m.capabilities.imageInput) {
+		parts.push(t('capability.vision'));
+	}
+	if (m.capabilities.thinking) {
+		parts.push(t('capability.thinking'));
+	}
+	return parts.join(' · ');
 }
 
 export function getConfiguredThinkingEffort(

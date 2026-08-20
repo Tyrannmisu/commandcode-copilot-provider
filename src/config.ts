@@ -74,3 +74,29 @@ export function getDebugMode(): DebugMode {
 export function getDebugLoggingEnabled(): boolean {
 	return getDebugMode() !== 'minimal';
 }
+
+/**
+ * How the picker renders the text alongside each model name.
+ *
+ * `auto` resolves to `compact` on Linux, where the picker lays `name` and
+ * `detail` out on a single line and gives the detail most of the width, and
+ * to `full` everywhere else.
+ */
+export type ModelDetailStyle = 'auto' | 'full' | 'compact' | 'hidden';
+
+export function getModelDetailStyle(): ModelDetailStyle {
+	const config = vscode.workspace.getConfiguration(CONFIG_SECTION);
+	const style = config.get<string>('modelDetailStyle');
+	if (style === 'full' || style === 'compact' || style === 'hidden') {
+		return style;
+	}
+	return 'auto';
+}
+
+export function resolveModelDetailStyle(): Exclude<ModelDetailStyle, 'auto'> {
+	const style = getModelDetailStyle();
+	if (style === 'auto') {
+		return process.platform === 'linux' ? 'compact' : 'full';
+	}
+	return style;
+}

@@ -3,7 +3,7 @@
     "displayName": "Command Code for Copilot Chat",
     "description": "Pick Command Code models from the Copilot Chat model picker. Vision, thinking mode, agent tools — zero config, BYOK.",
     "icon": "resources/icon.png",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "publisher": "Tyrannmisu",
     "license": "MIT",
     "repository": {
@@ -168,6 +168,29 @@
                         "%commandcode-copilot.config.debugMode.verbose.description%"
                     ],
                     "markdownDescription": "%commandcode-copilot.config.debugMode.description%"
+                },
+                "commandcode-copilot.modelDetailStyle": {
+                    "type": "string",
+                    "default": "auto",
+                    "enum": [
+                        "auto",
+                        "full",
+                        "compact",
+                        "hidden"
+                    ],
+                    "enumItemLabels": [
+                        "%commandcode-copilot.config.modelDetailStyle.auto.label%",
+                        "%commandcode-copilot.config.modelDetailStyle.full.label%",
+                        "%commandcode-copilot.config.modelDetailStyle.compact.label%",
+                        "%commandcode-copilot.config.modelDetailStyle.hidden.label%"
+                    ],
+                    "enumDescriptions": [
+                        "%commandcode-copilot.config.modelDetailStyle.auto.description%",
+                        "%commandcode-copilot.config.modelDetailStyle.full.description%",
+                        "%commandcode-copilot.config.modelDetailStyle.compact.description%",
+                        "%commandcode-copilot.config.modelDetailStyle.hidden.description%"
+                    ],
+                    "markdownDescription": "%commandcode-copilot.config.modelDetailStyle.description%"
                 }
             }
         }

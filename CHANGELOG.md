@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1 (2026-08-20)
+
+### Features
+
+- Added the `commandcode-copilot.modelDetailStyle` setting (default `auto`) to control the text shown beside model names in the model picker: `full` (long description), `compact` (short capability text such as "Vision · Thinking"), or `hidden` (name only). The full description stays available in the hover tooltip.
+
+### Fixes
+
+- On Linux, long detail text no longer collapses model names in the picker — `auto` shows compact capability text on Linux and the full description elsewhere.
+
 ## 0.2.0 (2026-08-20)
 
 ### Features

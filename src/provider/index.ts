@@ -47,6 +47,7 @@ export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider
 					e.affectsConfiguration('commandcode-copilot.apiKey') ||
 					e.affectsConfiguration('commandcode-copilot.baseUrl') ||
 					e.affectsConfiguration('commandcode-copilot.modelBlacklist') ||
+					e.affectsConfiguration('commandcode-copilot.modelDetailStyle') ||
 					e.affectsConfiguration('commandcode-copilot.modelIdOverrides') ||
 					e.affectsConfiguration('commandcode-copilot.maxContextTokens')
 				) {

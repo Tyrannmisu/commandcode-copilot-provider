@@ -102,16 +102,17 @@ Over 50 models from 17 different providers are included — see the complete cat
 
 ## Extension settings
 
-| Setting                                | Default                                  | Purpose                                                                                             |
-| -------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `commandcode-copilot.baseUrl`          | `https://api.commandcode.ai/provider/v1` | Base URL for API calls — override for self-hosted setups or reverse proxies                         |
-| `commandcode-copilot.maxTokens`        | `0`                                      | Cap on output tokens per response (`0` = unlimited). Handy for managing costs                       |
-| `commandcode-copilot.zdr`              | `false`                                  | Attach `x-cmdc-zdr: 1` header to enforce zero-data-retention endpoint routing                       |
-| `commandcode-copilot.modelIdOverrides` | `{}`                                     | Remap VS Code model identifiers to alternate API identifiers (useful for mirrored deployments)      |
-| `commandcode-copilot.modelBlacklist`   | `[]`                                     | Exclude specific model identifiers from appearing in the selector                                   |
-| `commandcode-copilot.maxContextTokens` | `0`                                      | Override the context window size reported to Copilot (`0` = keep the model's native default)        |
-| `commandcode-copilot.apiKey`           | _(unset)_                                | Fallback API key location (settings-based; SecretStorage takes precedence when both are set)        |
-| `commandcode-copilot.debugMode`        | `minimal`                                | Logging detail: `minimal` (quiet), `metadata` (per-call summary), `verbose` (full request/response) |
+| Setting                                | Default                                  | Purpose                                                                                                                                    |
+| -------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `commandcode-copilot.baseUrl`          | `https://api.commandcode.ai/provider/v1` | Base URL for API calls — override for self-hosted setups or reverse proxies                                                                |
+| `commandcode-copilot.maxTokens`        | `0`                                      | Cap on output tokens per response (`0` = unlimited). Handy for managing costs                                                              |
+| `commandcode-copilot.zdr`              | `false`                                  | Attach `x-cmdc-zdr: 1` header to enforce zero-data-retention endpoint routing                                                              |
+| `commandcode-copilot.modelIdOverrides` | `{}`                                     | Remap VS Code model identifiers to alternate API identifiers (useful for mirrored deployments)                                             |
+| `commandcode-copilot.modelBlacklist`   | `[]`                                     | Exclude specific model identifiers from appearing in the selector                                                                          |
+| `commandcode-copilot.maxContextTokens` | `0`                                      | Override the context window size reported to Copilot (`0` = keep the model's native default)                                               |
+| `commandcode-copilot.modelDetailStyle` | `auto`                                   | Text shown beside model names: `auto` (compact on Linux, full elsewhere), `full`, `compact` (`Vision · Thinking`), or `hidden` (name only) |
+| `commandcode-copilot.apiKey`           | _(unset)_                                | Fallback API key location (settings-based; SecretStorage takes precedence when both are set)                                               |
+| `commandcode-copilot.debugMode`        | `minimal`                                | Logging detail: `minimal` (quiet), `metadata` (per-call summary), `verbose` (full request/response)                                        |
 
 Reasoning depth is adjusted per model through the Copilot Chat model selector.
 

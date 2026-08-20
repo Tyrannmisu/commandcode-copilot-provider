@@ -38,6 +38,10 @@ const zh: Translations = {
 	'thinking.high': '深度',
 	'thinking.high.desc': '深度推理，适合复杂任务',
 
+	// Capabilities — short labels shown next to model names in the picker
+	'capability.vision': '视觉',
+	'capability.thinking': '思考',
+
 	// Models
 	'models.refreshInProgress': '正在刷新模型列表...',
 	'models.refreshSucceeded': '已从 Command Code 拉取 {0} 个模型。',
@@ -108,6 +112,10 @@ const en: Translations = {
 	'thinking.medium.desc': 'Recommended for everyday use',
 	'thinking.high': 'Deep',
 	'thinking.high.desc': 'Deep reasoning for complex tasks',
+
+	// Capabilities — short labels shown next to model names in the picker
+	'capability.vision': 'Vision',
+	'capability.thinking': 'Thinking',
 
 	// Models
 	'models.refreshInProgress': 'Refreshing model list...',

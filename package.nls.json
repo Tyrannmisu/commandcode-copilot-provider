@@ -27,5 +27,14 @@
     "commandcode-copilot.config.debugMode.metadata.label": "Metadata",
     "commandcode-copilot.config.debugMode.metadata.description": "Request/response metadata (model id, message counts, tool counts, thinking effort).",
     "commandcode-copilot.config.debugMode.verbose.label": "Verbose",
-    "commandcode-copilot.config.debugMode.verbose.description": "Full request payloads. May contain sensitive content."
+    "commandcode-copilot.config.debugMode.verbose.description": "Full request payloads. May contain sensitive content.",
+    "commandcode-copilot.config.modelDetailStyle.description": "Controls the text shown next to each model name in the Copilot Chat model picker.",
+    "commandcode-copilot.config.modelDetailStyle.auto.label": "Auto",
+    "commandcode-copilot.config.modelDetailStyle.auto.description": "Compact capability text on Linux, full description on other platforms.",
+    "commandcode-copilot.config.modelDetailStyle.full.label": "Full",
+    "commandcode-copilot.config.modelDetailStyle.full.description": "Show the full model description next to the model name.",
+    "commandcode-copilot.config.modelDetailStyle.compact.label": "Compact",
+    "commandcode-copilot.config.modelDetailStyle.compact.description": "Show short capability text such as Vision · Thinking.",
+    "commandcode-copilot.config.modelDetailStyle.hidden.label": "Hidden",
+    "commandcode-copilot.config.modelDetailStyle.hidden.description": "Show only the model name; the full description stays in the hover tooltip."
 }
