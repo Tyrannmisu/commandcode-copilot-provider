@@ -71,8 +71,8 @@ Built entirely on VS Code's extension API and Node.js standard library. There's 
 
 ### Install
 
-1. **VS Code** — grab it from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Tyrannmisu.commandcode-copilot-provider) (once published).
-2. **Other editors on Open VSX** — available on [Open VSX](https://open-vsx.org/extension/Tyrannmisu/commandcode-copilot-provider) (once published).
+1. **VS Code** — grab it from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Tyrannmisu.commandcode-copilot-provider).
+2. **Other editors on Open VSX** — available on [Open VSX](https://open-vsx.org/extension/Tyrannmisu/commandcode-copilot-provider).
 
 ### First steps
 
