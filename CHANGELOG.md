@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0 (2026-08-20)
+
+### Features
+
+- Live model-catalog sync: Auto-discovers new models from the live catalog and surfaces them in the picker (marked `(fetched)`), assuming conservative defaults (vision + reasoning enabled, output estimated from the context window) until verified. Also fetches context windows for known/configured models and updates them if changes occur. Fetched once from `GET /provider/v1/models`, persisted in extension storage, and refreshed only on demand via **Command Code: Refresh Models**.
+- Persisted catalog snapshot falls back to the bundled model registry when no API key is set or the sync fails.-
+
+### Fixes
+
+- Corrected the context window reported for every model in the catalog to match the live `context_length` served by `/provider/v1/models` (e.g. DeepSeek V4 Flash/Pro now report 1M, the GPT-5.4 family 400K, Grok 4.5/4.6 500K).
+- Muse Spark 1.1 / 1.2 / 1.2 Contributor now report their real 1M context window and 128K max output tokens (previously shown as 288K context / 32K output).
+
 ## 0.1.1 (2026-08-19)
 
 ### Features

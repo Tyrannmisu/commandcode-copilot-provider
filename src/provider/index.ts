@@ -3,7 +3,9 @@ import { AuthManager } from '../auth';
 import { t } from '../i18n';
 import { logger } from '../logger';
 import { MODELS } from '../models';
+import { getLiveCatalog, liveModelToDefinition, type LiveModelInfo } from './catalog';
 import { toChatInfo } from './models';
+import type { ModelDefinition } from '../types';
 import { prepareChatRequest } from './request';
 import { streamChatCompletion } from './stream';
 import { estimateTokenCount } from './tokens';
@@ -17,9 +19,12 @@ const PROVIDER_VENDOR = 'commandcode';
  */
 export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider {
 	private readonly authManager: AuthManager;
+	private readonly globalState: vscode.Memento;
 	private readonly onDidChangeLanguageModelChatInformationEmitter = new vscode.EventEmitter<void>();
 	private isActive = true;
 	private modelById = new Map(MODELS.map((m) => [m.id, m]));
+	/** Set when the user explicitly asks to re-sync the live catalog. */
+	private catalogSyncRequested = false;
 
 	readonly onDidChangeLanguageModelChatInformation =
 		this.onDidChangeLanguageModelChatInformationEmitter.event;
@@ -32,6 +37,7 @@ export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider
 
 	constructor(context: vscode.ExtensionContext) {
 		this.authManager = new AuthManager(context);
+		this.globalState = context.globalState;
 
 		context.subscriptions.push(
 			this.onDidChangeLanguageModelChatInformationEmitter,
@@ -75,8 +81,15 @@ export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider
 		return this.authManager.hasApiKey();
 	}
 
-	/** Force Copilot Chat to re-query model information. */
-	refreshModelPicker(): void {
+	/**
+	 * Force Copilot Chat to re-query model information.
+	 *
+	 * @param forceCatalogSync When true (the "Command Code: Refresh Models"
+	 * command), the next picker load re-fetches the live catalog from the API.
+	 * Otherwise only persisted data is used — no network traffic.
+	 */
+	refreshModelPicker(forceCatalogSync = false): void {
+		this.catalogSyncRequested = this.catalogSyncRequested || forceCatalogSync;
 		this.onDidChangeLanguageModelChatInformationEmitter.fire();
 	}
 
@@ -99,7 +112,7 @@ export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider
 
 	async provideLanguageModelChatInformation(
 		_options: vscode.PrepareLanguageModelChatModelOptions,
-		_token: vscode.CancellationToken,
+		token: vscode.CancellationToken,
 	): Promise<vscode.LanguageModelChatInformation[]> {
 		if (!this.isActive) {
 			return [];
@@ -108,7 +121,32 @@ export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider
 		const hasKey = await this.authManager.hasApiKey();
 		const { getModelBlacklist } = await import('../config');
 		const blacklist = new Set(getModelBlacklist());
-		return MODELS.filter((m) => !blacklist.has(m.id)).map((m) => toChatInfo(m, hasKey));
+
+		// Live catalog (context windows + names), persisted across sessions
+		// and refreshed only on first run or explicit user action. It drives
+		// context overrides for known models and auto-discovers new ones.
+		const forceSync = this.catalogSyncRequested;
+		this.catalogSyncRequested = false;
+		const liveCatalog = hasKey
+			? await getLiveCatalog(this.globalState, this.authManager, token, forceSync)
+			: new Map<string, LiveModelInfo>();
+
+		// Auto-discover models the provider API serves but the static registry
+		// doesn't know about yet. They're marked "(fetched)" and merged into
+		// `modelById` so chat requests resolve their capabilities.
+		const knownIds = new Set(MODELS.map((m) => m.id));
+		const fetchedModels: ModelDefinition[] = [];
+		for (const [id, info] of liveCatalog) {
+			if (!knownIds.has(id) && !blacklist.has(id)) {
+				const definition = liveModelToDefinition(id, info);
+				fetchedModels.push(definition);
+				this.modelById.set(id, definition);
+			}
+		}
+
+		return [...MODELS, ...fetchedModels]
+			.filter((m) => !blacklist.has(m.id))
+			.map((m) => toChatInfo(m, hasKey, liveCatalog.get(m.id)?.contextLength));
 	}
 
 	async provideLanguageModelChatResponse(

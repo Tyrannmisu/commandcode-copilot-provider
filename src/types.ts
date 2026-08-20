@@ -144,6 +144,14 @@ export interface ModelDefinition {
 export interface ApiModelInfo {
 	id: string;
 	owned_by?: string;
+	/** Human-readable model name reported by the upstream `/models` response. */
+	name?: string;
+	/**
+	 * Total context window in tokens (input + output) as reported by
+	 * `GET /provider/v1/models`. Consumed by the live catalog sync to keep
+	 * the picker's reported context in step with the upstream registry.
+	 */
+	context_length?: number;
 	/**
 	 * Capability hints derived from the model registry. The upstream `/models`
 	 * response is not yet guaranteed to include this — we infer it when known.

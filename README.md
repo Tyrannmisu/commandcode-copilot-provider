@@ -17,6 +17,14 @@ Access Command Code models directly inside Copilot Chat — no new UI, no workfl
 
 Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5, Claude Sonnet 5, GPT-5.5/5.6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash, Kimi K3, Qwen 3.8 Max, GLM-5.3, Grok 4.6, and many others. You can swap models in the middle of a conversation without resetting context.
 
+### Live model discovery
+
+The extension fetches the current model catalog from Command Code **once**, persists it locally, and only contacts the API again when you run **Command Code: Refresh Models** — there's no periodic background traffic.
+
+- **Context stays accurate** — every model's reported context window mirrors the live `context_length` from the provider API.
+- **New models appear automatically** — when Command Code ships a model that isn't in the bundled registry yet, it shows up in the picker on its own. Auto-discovered entries are suffixed with **"(fetched)"** so you can tell them apart.
+- **Conservative defaults** — until a model is verified and added to the registry in [`src/models.ts`](src/models.ts), auto-discovered entries assume vision support, reasoning/thinking enabled, tool calling on, and an estimated output budget of ⅛ of the context window (capped at 128K tokens).
+
 ### Per-model reasoning control
 
 Models that support extended reasoning display a **Thinking effort** selector right inside the Copilot interface:
@@ -90,7 +98,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **Grok 4.5**         | Off / Light / Standard / Deep | ✅     | xAI's top model for development tasks       |
 | **GLM-5.3**          | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context          |
 
-Over 50 models from 17 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts).
+Over 50 models from 17 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
 
 ## Extension settings
 

@@ -31,10 +31,25 @@ export type ModelPickerChatInformation = vscode.LanguageModelChatInformation & {
 	readonly configurationSchema?: ThinkingEffortConfigurationSchema;
 };
 
-export function toChatInfo(m: ModelDefinition, hasApiKey: boolean): ModelPickerChatInformation {
+export function toChatInfo(
+	m: ModelDefinition,
+	hasApiKey: boolean,
+	liveContextLength?: number,
+): ModelPickerChatInformation {
 	const thinkingCapability = m.capabilities.thinking;
 	const contextOverride = getMaxContextTokensOverride();
-	const maxInputTokens = contextOverride > 0 ? contextOverride : m.maxInputTokens;
+
+	// Precedence for the input window reported to Copilot:
+	//   1. explicit `maxContextTokens` setting,
+	//   2. live `context_length` from the provider API (total window minus
+	//      the output reserved for generation),
+	//   3. the static registry value as a fallback.
+	let maxInputTokens = m.maxInputTokens;
+	if (contextOverride > 0) {
+		maxInputTokens = contextOverride;
+	} else if (typeof liveContextLength === 'number' && liveContextLength > m.maxOutputTokens) {
+		maxInputTokens = liveContextLength - m.maxOutputTokens;
+	}
 
 	return {
 		id: m.id,
