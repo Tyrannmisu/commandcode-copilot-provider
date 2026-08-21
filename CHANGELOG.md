@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2 (2026-08-21)
+
+### Fixes
+
+- **Clipboard-pasted images are now visible to vision-capable models.** Multimodal user messages were serialized with image parts in a non-standard `parts` field alongside `content`, which OpenAI-compatible servers ignore — so images pasted directly into the chat prompt were silently dropped (only file-based images worked, since those reach the model via tool calls). Image parts are now embedded in the `content` array per the chat-completions spec: `content: [{ type: 'text' }, { type: 'image_url' }, ...]`.
+- Added diagnostics for image handling: a warning is logged when an image part is dropped because the selected model does not advertise image input, and a debug message is logged when image parts are attached to a request.
+
 ## 0.2.1 (2026-08-20)
 
 ### Features

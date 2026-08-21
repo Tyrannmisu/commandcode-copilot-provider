@@ -1,4 +1,5 @@
 import vscode from 'vscode';
+import { logger } from '../logger';
 import { safeStringify } from '../json';
 import type { ChatMessage, ChatMessagePart, ChatTool, ChatToolCall } from '../types';
 
@@ -54,6 +55,13 @@ export function convertMessages(
 						type: 'image_url',
 						image_url: { url, detail: 'auto' },
 					});
+				} else if (part.mimeType.startsWith('image/')) {
+					// Diagnostic: an image arrived but the model is flagged as
+					// non-vision, so it would be silently dropped. Surface this
+					// so "the model can't see my image" is explainable.
+					logger.warn(
+						`Dropping image part (${part.mimeType}, ${part.data?.byteLength ?? 0} bytes): model does not advertise image input`,
+					);
 				}
 				// Non-image data parts are intentionally ignored — the upstream
 				// API only accepts text + image_url parts.
@@ -79,6 +87,11 @@ export function convertMessages(
 		} else if (role === 'user') {
 			if (text || imageSegments.length > 0) {
 				if (imageSegments.length > 0 && options.imageInput) {
+					logger.debug(
+						`Attaching ${imageSegments.length} image part(s) as multimodal content`,
+					);
+					// OpenAI-compatible multimodal content: the parts array lives
+					// inside `content`, not in a separate field.
 					const parts: ChatMessagePart[] = [];
 					if (text) {
 						parts.push({ type: 'text', text });
@@ -86,8 +99,7 @@ export function convertMessages(
 					parts.push(...imageSegments);
 					result.push({
 						role: 'user',
-						content: text,
-						parts,
+						content: parts,
 					});
 				} else {
 					result.push({ role: 'user', content: text });
@@ -117,7 +129,7 @@ function encodeBase64(bytes: Uint8Array): string {
 		return Buffer.from(bytes).toString('base64');
 	}
 	let binary = '';
-	for (let i = 0; i < bytes.length; i += 1) {
+	for (let i = 0;i < bytes.length;i += 1) {
 		binary += String.fromCharCode(bytes[i]!);
 	}
 	// btoa is available in the extension host
@@ -173,15 +185,21 @@ export function convertTools(
 export function countMessageChars(messages: ChatMessage[]): number {
 	let total = 0;
 	for (const msg of messages) {
-		total += msg.content?.length ?? 0;
-		total += msg.reasoning_content?.length ?? 0;
-		if (msg.parts) {
-			for (const part of msg.parts) {
+		if (typeof msg.content === 'string') {
+			total += msg.content.length;
+		} else {
+			for (const part of msg.content) {
 				if (part.text) {
 					total += part.text.length;
 				}
+				// Images count as a fixed overhead; their base64 payload is not
+				// representative of token cost.
+				if (part.image_url) {
+					total += 1024;
+				}
 			}
 		}
+		total += msg.reasoning_content?.length ?? 0;
 		if (msg.tool_calls) {
 			for (const tc of msg.tool_calls) {
 				total += tc.function?.name?.length ?? 0;

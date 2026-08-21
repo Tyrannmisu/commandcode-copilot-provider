@@ -20,13 +20,15 @@ export type ChatRole = 'system' | 'user' | 'assistant' | 'tool';
 
 export interface ChatMessage {
 	role: ChatRole;
-	/** Text content of the message. May be empty for tool/assistant turns. */
-	content: string;
+	/**
+	 * Text content of the message. For user messages with image input this is
+	 * a multimodal content array per the OpenAI chat-completions spec
+	 * (`[{ type: 'text' }, { type: 'image_url' }, ...]`).
+	 */
+	content: string | ChatMessagePart[];
 	tool_call_id?: string;
 	tool_calls?: ChatToolCall[];
 	reasoning_content?: string;
-	/** Optional multimodal content for user messages (vision input). */
-	parts?: ChatMessagePart[];
 }
 
 export interface ChatMessagePart {
