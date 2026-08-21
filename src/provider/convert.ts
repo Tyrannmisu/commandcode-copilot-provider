@@ -87,9 +87,7 @@ export function convertMessages(
 		} else if (role === 'user') {
 			if (text || imageSegments.length > 0) {
 				if (imageSegments.length > 0 && options.imageInput) {
-					logger.debug(
-						`Attaching ${imageSegments.length} image part(s) as multimodal content`,
-					);
+					logger.debug(`Attaching ${imageSegments.length} image part(s) as multimodal content`);
 					// OpenAI-compatible multimodal content: the parts array lives
 					// inside `content`, not in a separate field.
 					const parts: ChatMessagePart[] = [];
@@ -129,7 +127,7 @@ function encodeBase64(bytes: Uint8Array): string {
 		return Buffer.from(bytes).toString('base64');
 	}
 	let binary = '';
-	for (let i = 0;i < bytes.length;i += 1) {
+	for (let i = 0; i < bytes.length; i += 1) {
 		binary += String.fromCharCode(bytes[i]!);
 	}
 	// btoa is available in the extension host
