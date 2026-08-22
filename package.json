@@ -3,7 +3,7 @@
     "displayName": "Command Code for Copilot Chat",
     "description": "Pick Command Code models from the Copilot Chat model picker. Vision, thinking mode, agent tools — zero config, BYOK.",
     "icon": "resources/icon.png",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "publisher": "Tyrannmisu",
     "license": "MIT",
     "repository": {

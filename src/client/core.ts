@@ -13,13 +13,13 @@ import type {
 import { createHttpError, formatRequestError, normalizeRequestError } from './error';
 
 export interface ClientOptions {
-	/** Optional extra headers attached to every request (e.g. `x-cmdc-zdr: 1`). */
+	/** Optional extra headers attached to every request (e.g. `x-cmd-zdr: 1`). */
 	extraHeaders?: Record<string, string>;
 	/** Surface non-fatal request metadata in logs. */
 	debug?: boolean;
 }
 
-const ZDR_HEADER_NAME = 'x-cmdc-zdr';
+const ZDR_HEADER_NAME = 'x-cmd-zdr';
 const ZDR_HEADER_VALUE = '1';
 
 /**
@@ -158,16 +158,9 @@ export class CommandCodeClient {
 		const pendingToolCalls = new Map<number, ChatToolCall>();
 
 		try {
-			while (true) {
-				if (cancellationToken?.isCancellationRequested) {
-					controller.abort();
-					return;
-				}
-
+			while (!cancellationToken?.isCancellationRequested) {
 				const { done, value } = await reader.read();
-				if (done) {
-					break;
-				}
+				if (done) break;
 
 				buffer += decoder.decode(value, { stream: true });
 
@@ -175,74 +168,113 @@ export class CommandCodeClient {
 				buffer = lines.pop() || '';
 
 				for (const line of lines) {
-					const trimmed = line.trim();
-
-					if (!trimmed || trimmed.startsWith(':')) {
-						continue;
+					const result = this.processStreamLine(line, callbacks, pendingToolCalls, latestUsage);
+					if (result?.usage) {
+						latestUsage = result.usage;
 					}
-
-					if (trimmed === 'data: [DONE]') {
-						flushToolCalls(pendingToolCalls, callbacks);
-						reportFinalUsage(callbacks, latestUsage);
-						callbacks.onDone();
+					if (result?.shouldStop) {
 						return;
 					}
-
-					if (!trimmed.startsWith('data: ')) {
-						continue;
-					}
-
-					const jsonStr = trimmed.slice(6);
-					try {
-						const chunk: ChatStreamChunk = JSON.parse(jsonStr);
-						const choice = chunk.choices?.[0];
-
-						if (chunk.usage) {
-							latestUsage = chunk.usage;
-						}
-
-						if (!choice) {
-							continue;
-						}
-
-						const reasoning = choice.delta.reasoning_content;
-						if (reasoning) {
-							callbacks.onThinking(reasoning);
-						}
-
-						if (choice.delta.content) {
-							callbacks.onContent(choice.delta.content);
-						}
-
-						if (choice.delta.tool_calls) {
-							accumulateToolCalls(pendingToolCalls, choice.delta.tool_calls);
-						}
-
-						if (choice.finish_reason === 'tool_calls' || choice.finish_reason === 'stop') {
-							flushToolCalls(pendingToolCalls, callbacks);
-						}
-					} catch (parseError) {
-						if (this.options.debug) {
-							logger.warn(`Failed to parse SSE chunk: ${jsonStr.slice(0, 200)}`, parseError);
-						}
-					}
 				}
+			}
+
+			if (cancellationToken?.isCancellationRequested) {
+				controller.abort();
+				return;
 			}
 
 			reportFinalUsage(callbacks, latestUsage);
 			callbacks.onDone();
 		} catch (error) {
-			if (isAbortError(error) && cancellationToken?.isCancellationRequested) {
-				return;
+			this.handleStreamError(error, callbacks, cancellationToken, request);
+		}
+	}
+
+	private handleStreamError(
+		error: unknown,
+		callbacks: StreamCallbacks,
+		cancellationToken: CancellationToken | undefined,
+		request: ChatRequest,
+	): void {
+		if (isAbortError(error) && cancellationToken?.isCancellationRequested) {
+			return;
+		}
+		const normalized = normalizeRequestError(error, {
+			baseUrl: this.baseUrl,
+			request,
+		});
+		if (this.options.debug) {
+			logger.error('Command Code stream failed:', formatRequestError(normalized));
+		}
+		callbacks.onError(normalized);
+	}
+
+	private processStreamLine(
+		line: string,
+		callbacks: StreamCallbacks,
+		pendingToolCalls: Map<number, ChatToolCall>,
+		latestUsage: ChatUsage | undefined,
+	): { usage?: ChatUsage; shouldStop?: boolean } {
+		const trimmed = line.trim();
+
+		if (!trimmed || trimmed.startsWith(':')) {
+			return {};
+		}
+
+		if (trimmed === 'data: [DONE]') {
+			flushToolCalls(pendingToolCalls, callbacks);
+			reportFinalUsage(callbacks, latestUsage);
+			callbacks.onDone();
+			return { shouldStop: true };
+		}
+
+		if (!trimmed.startsWith('data: ')) {
+			return {};
+		}
+
+		const jsonStr = trimmed.slice(6);
+		try {
+			const chunk: ChatStreamChunk = JSON.parse(jsonStr);
+			const choice = chunk.choices?.[0];
+
+			if (chunk.usage) {
+				return { usage: chunk.usage };
 			}
-			const normalized = normalizeRequestError(error, {
-				baseUrl: this.baseUrl,
-				request,
-			});
+
+			if (!choice) {
+				return {};
+			}
+
+			this.dispatchChunk(choice, callbacks, pendingToolCalls);
+		} catch (parseError) {
 			if (this.options.debug) {
-				logger.error('Command Code stream failed:', formatRequestError(normalized));
+				logger.warn(`Failed to parse SSE chunk: ${jsonStr.slice(0, 200)}`, parseError);
 			}
-			callbacks.onError(normalized);
+		}
+
+		return {};
+	}
+
+	private dispatchChunk(
+		choice: NonNullable<ChatStreamChunk['choices']>[0],
+		callbacks: StreamCallbacks,
+		pendingToolCalls: Map<number, ChatToolCall>,
+	): void {
+		const reasoning = choice.delta.reasoning_content;
+		if (reasoning) {
+			callbacks.onThinking(reasoning);
+		}
+
+		if (choice.delta.content) {
+			callbacks.onContent(choice.delta.content);
+		}
+
+		if (choice.delta.tool_calls) {
+			accumulateToolCalls(pendingToolCalls, choice.delta.tool_calls);
+		}
+
+		if (choice.finish_reason === 'tool_calls' || choice.finish_reason === 'stop') {
+			flushToolCalls(pendingToolCalls, callbacks);
 		}
 	}
 }

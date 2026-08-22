@@ -55,7 +55,7 @@ export function getMaxContextTokensOverride(): number {
 }
 
 /**
- * Whether to attach the `x-cmdc-zdr: 1` header on every request.
+ * Whether to attach the `x-cmd-zdr: 1` header on every request.
  */
 export function getZdrEnabled(): boolean {
 	const config = vscode.workspace.getConfiguration(CONFIG_SECTION);

@@ -16,7 +16,7 @@
     "commandcode-copilot.config.title": "Command Code Copilot",
     "commandcode-copilot.config.baseUrl.description": "Command Code Provider API base URL. Defaults to https://api.commandcode.ai/provider/v1.",
     "commandcode-copilot.config.maxTokens.description": "Maximum number of output tokens per request. Set to 0 to use the API default (no limit). Useful for controlling costs.",
-    "commandcode-copilot.config.zdr.description": "Send `x-cmdc-zdr: 1` on every request to enforce zero-data-retention routing. Requests only go through ZDR-capable upstreams; if a model has no ZDR upstream the request fails with HTTP 422 (`cmd_zdr_no_providers`). Disable if you hit unexpected 422s.",
+    "commandcode-copilot.config.zdr.description": "Send `x-cmd-zdr: 1` on every request to enforce zero-data-retention routing. Requests only go through ZDR-capable upstreams; if a model has no ZDR upstream the request fails with HTTP 422 (`cmd_zdr_no_providers`). Disable if you hit unexpected 422s.",
     "commandcode-copilot.config.apiKey.description": "Command Code API key (fallback). Stored values in VS Code SecretStorage take precedence; this setting is mainly for CI/automation.",
     "commandcode-copilot.config.modelIdOverrides.description": "Map a VS Code model id to a different API model id. Useful when routing through a mirror or proxy that uses different names. Leave empty to send the upstream id as-is.",
     "commandcode-copilot.config.modelBlacklist.description": "Model ids to hide from the picker (matched on the VS Code model id). Useful when a mirror does not serve a specific upstream model.",

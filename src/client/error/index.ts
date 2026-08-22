@@ -229,21 +229,23 @@ function getRequestDiagnosticMessage(context: RequestErrorContext): string {
 	return model ? `model=${model}` : 'model=<not-yet-built>';
 }
 
+function getErrorStatusKey(status: number | undefined): 401 | 403 | 422 | '5xx' | undefined {
+	if (status === undefined) {
+		return undefined;
+	}
+	if (status === 401) return 401;
+	if (status === 403) return 403;
+	if (status === 422) return 422;
+	if (status >= 500) return '5xx';
+	return undefined;
+}
+
 function getErrorActions(error: CommandCodeRequestError, urls: ErrorActionUrls): ErrorActionLink[] {
 	if (error.kind !== 'http' || error.status === undefined) {
 		return [];
 	}
 
-	const statusKey: 401 | 403 | 422 | '5xx' | undefined =
-		error.status === 401
-			? 401
-			: error.status === 403
-				? 403
-				: error.status === 422
-					? 422
-					: error.status >= 500
-						? '5xx'
-						: undefined;
+	const statusKey = getErrorStatusKey(error.status);
 	if (!statusKey) {
 		return [];
 	}
