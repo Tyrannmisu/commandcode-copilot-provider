@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3 (2026-08-22)
+
+### Fixes
+
+- **ZRD Header** ZDR (Zero data retention) did not work properly because the header that was sent, was not correct.
+
 ## 0.2.2 (2026-08-21)
 
 ### Fixes
