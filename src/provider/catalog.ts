@@ -103,17 +103,29 @@ export function defaultOutputTokensForContext(contextLength: number): number {
 }
 
 /**
+ * True when the model id carries the `-free` suffix Command Code appends to
+ * limited-time free variants of paid models (e.g. `minimax/minimax-m3-free`).
+ */
+export function isFreeModelId(id: string): boolean {
+	return /-free$/i.test(id);
+}
+
+/**
  * Build a synthetic `ModelDefinition` for a model that only exists in the
  * live catalog. Capabilities are conservative defaults (vision + reasoning
  * enabled, tool calling on), and the name is marked "(fetched)" so users can
- * tell auto-discovered entries from the verified static registry.
+ * tell auto-discovered entries from the verified static registry. Free
+ * variants (id ending in `-free`) are marked "(fetched, free)" instead, and
+ * the definition is flagged `fetched` so the picker's tooltip card can show
+ * the upstream model id.
  */
 export function liveModelToDefinition(id: string, info: LiveModelInfo): ModelDefinition {
 	const maxOutputTokens = defaultOutputTokensForContext(info.contextLength);
 	const shortVersion = id.slice(id.lastIndexOf('/') + 1) || 'live';
+	const isFree = isFreeModelId(id);
 	return {
 		id,
-		name: `${info.name} (fetched)`,
+		name: isFree ? `${info.name} (fetched, free)` : `${info.name} (fetched)`,
 		family: FAMILY,
 		version: shortVersion,
 		detail: 'Auto-discovered from the live Command Code catalog',
@@ -125,6 +137,7 @@ export function liveModelToDefinition(id: string, info: LiveModelInfo): ModelDef
 			thinking: LIVE_DEFAULT_THINKING,
 		},
 		category: 'Live',
+		fetched: true,
 	};
 }
 

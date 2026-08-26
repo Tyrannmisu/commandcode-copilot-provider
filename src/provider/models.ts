@@ -57,7 +57,7 @@ export function toChatInfo(
 		family: m.family,
 		version: m.version,
 		detail: hasApiKey ? formatModelDetail(m) : t('auth.apiKeyRequiredDetail'),
-		tooltip: hasApiKey ? m.detail : t('auth.apiKeyRequiredDetail'),
+		tooltip: hasApiKey ? formatModelTooltip(m) : t('auth.apiKeyRequiredDetail'),
 		statusIcon: hasApiKey ? undefined : new vscode.ThemeIcon('warning'),
 		maxInputTokens,
 		maxOutputTokens: m.maxOutputTokens,
@@ -102,6 +102,37 @@ function formatModelDetail(m: ModelDefinition): string {
 		parts.push(t('capability.thinking'));
 	}
 	return parts.join(' · ');
+}
+
+/**
+ * Build the hover tooltip card shown by Copilot Chat's model picker.
+ *
+ * Besides the marketing `detail` sentence it lists the model's capabilities
+ * (Vision · Reasoning) so users can see at a glance what the model supports.
+ * For models auto-discovered from the live catalog the upstream model id is
+ * appended — fetched entries can share a display name with a maintained one
+ * (e.g. `MiniMaxAI/MiniMax-M3` vs `minimax/minimax-m3-free`), so the id
+ * makes them distinguishable.
+ */
+function formatModelTooltip(m: ModelDefinition): string {
+	const lines: string[] = [m.detail];
+
+	const capabilities: string[] = [];
+	if (m.capabilities.imageInput) {
+		capabilities.push(t('capability.vision'));
+	}
+	if (m.capabilities.thinking) {
+		capabilities.push(t('capability.reasoning'));
+	}
+	if (capabilities.length > 0) {
+		lines.push(`${t('tooltip.capabilities')}: ${capabilities.join(' · ')}`);
+	}
+
+	if (m.fetched) {
+		lines.push(`${t('tooltip.modelId')}: ${m.id}`);
+	}
+
+	return lines.join('\n\n');
 }
 
 export function getConfiguredThinkingEffort(

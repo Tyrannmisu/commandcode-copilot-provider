@@ -41,6 +41,11 @@ const zh: Translations = {
 	// Capabilities — short labels shown next to model names in the picker
 	'capability.vision': '视觉',
 	'capability.thinking': '思考',
+	'capability.reasoning': '推理',
+
+	// Tooltip card — model picker hover
+	'tooltip.capabilities': '能力',
+	'tooltip.modelId': '模型 ID',
 
 	// Models
 	'models.refreshInProgress': '正在刷新模型列表...',
@@ -116,6 +121,11 @@ const en: Translations = {
 	// Capabilities — short labels shown next to model names in the picker
 	'capability.vision': 'Vision',
 	'capability.thinking': 'Thinking',
+	'capability.reasoning': 'Reasoning',
+
+	// Tooltip card — model picker hover
+	'tooltip.capabilities': 'Capabilities',
+	'tooltip.modelId': 'Model ID',
 
 	// Models
 	'models.refreshInProgress': 'Refreshing model list...',

@@ -141,6 +141,12 @@ export interface ModelDefinition {
 	};
 	/** Optional category used to group models in logs/UI. */
 	category?: string;
+	/**
+	 * True when the model was auto-discovered from the live catalog rather
+	 * than maintained in the static registry. Used to surface the upstream
+	 * model id in the picker's tooltip card.
+	 */
+	fetched?: boolean;
 }
 
 export interface ApiModelInfo {

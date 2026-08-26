@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.4 (2026-08-26)
+
+### Features
+
+- **DeepSeek V4 Flash Vision (exp)** added to the maintained model registry — fast hybrid-attention reasoning with native image input, surfaced with verified capabilities in the picker.
+- **Capabilities in the model card** — the hover tooltip card now lists every model's capabilities (Vision · Reasoning) instead of only the marketing description, so you can tell at a glance what a model supports.
+- **Fetched model ids in the model card** — auto-discovered models now show their full upstream model id (e.g. `minimax/minimax-m3-free`) in the tooltip card, and free variants (id ending in `-free`) are named **"(fetched, free)"** in the picker so they can't be confused with the paid model of the same name.
+
 ## 0.2.3 (2026-08-22)
 
 ### Fixes

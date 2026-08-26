@@ -15,14 +15,14 @@ Access Command Code models directly inside Copilot Chat — no new UI, no workfl
 
 ### Complete model catalog in the picker
 
-Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5, Claude Sonnet 5, GPT-5.5/5.6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash, Kimi K3, Qwen 3.8 Max, GLM-5.3, Grok 4.6, and many others. You can swap models in the middle of a conversation without resetting context.
+Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5, Claude Sonnet 5, GPT-5.5/5.6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash (incl. Flash Vision exp), Kimi K3, Qwen 3.8 Max, GLM-5.3, Grok 4.6, and many others. You can swap models in the middle of a conversation without resetting context.
 
 ### Live model discovery
 
 The extension fetches the current model catalog from Command Code **once**, persists it locally, and only contacts the API again when you run **Command Code: Refresh Models** — there's no periodic background traffic.
 
 - **Context stays accurate** — every model's reported context window mirrors the live `context_length` from the provider API.
-- **New models appear automatically** — when Command Code ships a model that isn't in the bundled registry yet, it shows up in the picker on its own. Auto-discovered entries are suffixed with **"(fetched)"** so you can tell them apart.
+- **New models appear automatically** — when Command Code ships a model that isn't in the bundled registry yet, it shows up in the picker on its own. Auto-discovered entries are suffixed with **"(fetched)"** so you can tell them apart; limited-time free variants (model id ending in `-free`) are marked **"(fetched, free)"**, and the tooltip card shows the full upstream model id so they can't be confused with the paid model of the same name.
 - **Conservative defaults** — until a model is verified and added to the registry in [`src/models.ts`](src/models.ts), auto-discovered entries assume vision support, reasoning/thinking enabled, tool calling on, and an estimated output budget of ⅛ of the context window (capped at 128K tokens).
 
 ### Per-model reasoning control
@@ -93,6 +93,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GPT-5.6-Luna**     | Off / Light / Standard / Deep | ✅     | Optimized for cost-sensitive workloads      |
 | **Gemini 3.7 Flash** | Off / Light / Standard / Deep | ✅     | Fast coding and agent-oriented tasks        |
 | **DeepSeek V4 Pro**  | Off / Light / Standard / Deep | —      | Long-context reasoning via hybrid attention |
+| **DeepSeek V4 Flash Vision (exp)** | Off / Light / Standard / Deep | ✅ | Fast reasoning with vision input                        |
 | **Qwen 3.7 Plus**    | Off / Light / Standard / Deep | ✅     | Cost-effective agentic development          |
 | **Kimi K3**          | Off / Light / Standard / Deep | ✅     | 1M-token context for knowledge-heavy work   |
 | **Grok 4.5**         | Off / Light / Standard / Deep | ✅     | xAI's top model for development tasks       |

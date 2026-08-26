@@ -206,6 +206,17 @@ export const MODELS: ModelDefinition[] = [
 		category: 'DeepSeek',
 	},
 	{
+		id: 'deepseek/deepseek-v4-flash-vision-exp',
+		name: 'DeepSeek V4 Flash Vision (exp)',
+		family: FAMILY,
+		version: 'v4',
+		detail: 'fast hybrid-attention reasoning with vision input',
+		maxInputTokens: 968000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'DeepSeek',
+	},
+	{
 		id: 'deepseek/deepseek-v4-pro',
 		name: 'DeepSeek V4 Pro',
 		family: FAMILY,
