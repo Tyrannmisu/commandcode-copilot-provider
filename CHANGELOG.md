@@ -5,6 +5,7 @@
 ### Features
 
 - **GLM-5.3 Flash** added to the maintained model registry — fast, affordable GLM coding with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+- **Qwen 3.8 Flash** added to the maintained model registry — fast low-cost agentic coding with native vision and reasoning, surfaced with verified capabilities in the picker.
 
 ## 0.2.4 (2026-08-26)
 

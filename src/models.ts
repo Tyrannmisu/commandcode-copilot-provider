@@ -113,6 +113,17 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'Alibaba',
 	},
+	{
+		id: 'Qwen/Qwen3.8-Flash',
+		name: 'Qwen 3.8 Flash',
+		family: FAMILY,
+		version: '3.8',
+		detail: 'fast low-cost agentic coding & reasoning',
+		maxInputTokens: 968000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Alibaba',
+	},
 
 	// ---- Anthropic ----
 	{
