@@ -698,4 +698,16 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: false, thinking: THINKING },
 		category: 'Z AI',
 	},
+	{
+		id: 'z-ai/glm-5.3-flash',
+		name: 'GLM-5.3 Flash',
+		family: FAMILY,
+		version: '5.3',
+		detail: 'fast, affordable GLM coding with 1M context',
+		// 1M total context window (1048576) minus 32K reserved for output.
+		maxInputTokens: 1016576,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Z AI',
+	},
 ];

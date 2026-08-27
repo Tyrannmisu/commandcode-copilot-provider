@@ -15,7 +15,7 @@ Access Command Code models directly inside Copilot Chat — no new UI, no workfl
 
 ### Complete model catalog in the picker
 
-Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5, Claude Sonnet 5, GPT-5.5/5.6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash (incl. Flash Vision exp), Kimi K3, Qwen 3.8 Max, GLM-5.3, Grok 4.6, and many others. You can swap models in the middle of a conversation without resetting context.
+Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5, Claude Sonnet 5, GPT-5.5/5.6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash (incl. Flash Vision exp), Kimi K3, Qwen 3.8 Max, GLM-5.3 & GLM-5.3 Flash, Grok 4.6, and many others. You can swap models in the middle of a conversation without resetting context.
 
 ### Live model discovery
 
@@ -98,8 +98,9 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **Kimi K3**          | Off / Light / Standard / Deep | ✅     | 1M-token context for knowledge-heavy work   |
 | **Grok 4.5**         | Off / Light / Standard / Deep | ✅     | xAI's top model for development tasks       |
 | **GLM-5.3**          | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context          |
+| **GLM-5.3 Flash**    | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context |
 
-Over 50 models from 17 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
+58 models from 17 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
 
 ## Extension settings
 
