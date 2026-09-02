@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6 (2026-09-02)
+
+### Features
+
+- **Claude Fable 5.1** added to the maintained model registry — the newest frontier Anthropic model with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+
 ## 0.2.5 (2026-08-27)
 
 ### Features

@@ -138,6 +138,17 @@ export const MODELS: ModelDefinition[] = [
 		category: 'Anthropic',
 	},
 	{
+		id: 'claude-fable-5-1',
+		name: 'Claude Fable 5.1',
+		family: FAMILY,
+		version: 'fable-5-1',
+		detail: 'latest Fable for demanding reasoning & long-horizon agents',
+		maxInputTokens: 936000,
+		maxOutputTokens: 64000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Anthropic',
+	},
+	{
 		id: 'claude-haiku-4-5-20251001',
 		name: 'Claude Haiku 4.5',
 		family: FAMILY,
