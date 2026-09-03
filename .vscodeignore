@@ -7,6 +7,13 @@ out/**/*.d.ts
 out/**/*.d.ts.map
 tsconfig.json
 .github/**
+.tempest/**
+.cursor/**
+.gemini/**
+.kiro/**
+.mcp.json
+opencode.jsonc
+opencode.json
 .gitignore
 .nvmrc
 .oxlintrc.json
