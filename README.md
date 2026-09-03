@@ -101,7 +101,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context          |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context |
 
-60 models from 17 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
+66 models from 18 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
 
 ## Extension settings
 

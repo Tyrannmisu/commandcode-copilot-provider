@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.7 (2026-09-03)
+
+### Features
+
+- **DeepSeek V4 Flash Fast** added to the maintained model registry — ultra-fast low-cost hybrid-attention reasoning with a 1M context window, surfaced with verified tool-calling and thinking-effort capabilities in the picker.
+- **Gemini 3.8 Flash** added to the maintained model registry — the latest Gemini Flash with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+- **LongCat 2.0 (free)** added to the maintained model registry — the first Meituan model, a free long-context reasoning option with a 1M context window, surfaced with verified tool-calling and thinking-effort capabilities in the picker.
+- **Muse Spark 1.3 & 1.3 Contributor** added to the maintained model registry — the latest open agentic models with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+- **Qwen 3.8 Max 0902** added to the maintained model registry — the refreshed Qwen 3.8 Max build with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+
 ## 0.2.6 (2026-09-02)
 
 ### Features

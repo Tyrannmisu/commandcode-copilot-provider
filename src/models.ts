@@ -103,6 +103,17 @@ export const MODELS: ModelDefinition[] = [
 		category: 'Alibaba',
 	},
 	{
+		id: 'Qwen/Qwen3.8-Max-0902',
+		name: 'Qwen 3.8 Max 0902',
+		family: FAMILY,
+		version: '3.8',
+		detail: 'refreshed Qwen 3.8 Max for autonomous long-horizon coding',
+		maxInputTokens: 968000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Alibaba',
+	},
+	{
 		id: 'Qwen/Qwen3.8-27B',
 		name: 'Qwen 3.8 27B',
 		family: FAMILY,
@@ -228,6 +239,17 @@ export const MODELS: ModelDefinition[] = [
 		category: 'DeepSeek',
 	},
 	{
+		id: 'deepseek/deepseek-v4-flash-fast',
+		name: 'DeepSeek V4 Flash Fast',
+		family: FAMILY,
+		version: 'v4',
+		detail: 'ultra-fast low-cost hybrid-attention reasoning',
+		maxInputTokens: 968000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: false, thinking: THINKING },
+		category: 'DeepSeek',
+	},
+	{
 		id: 'deepseek/deepseek-v4-flash-vision-exp',
 		name: 'DeepSeek V4 Flash Vision (exp)',
 		family: FAMILY,
@@ -306,6 +328,31 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'Google',
 	},
+	{
+		id: 'google/gemini-3.8-flash',
+		name: 'Gemini 3.8 Flash',
+		family: FAMILY,
+		version: '3.8',
+		detail: 'latest Gemini Flash for fast coding & agentic workflows',
+		maxInputTokens: 936000,
+		maxOutputTokens: 64000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Google',
+	},
+
+	// ---- Meituan ----
+	{
+		id: 'meituan/LongCat-2.0:free',
+		name: 'LongCat 2.0 (free)',
+		family: FAMILY,
+		version: '2.0',
+		detail: 'free long-context reasoning',
+		// 1M total context window (1048576) minus 32K reserved for output.
+		maxInputTokens: 1016576,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: false, thinking: THINKING },
+		category: 'Meituan',
+	},
 
 	// ---- Meta ----
 	{
@@ -338,6 +385,30 @@ export const MODELS: ModelDefinition[] = [
 		family: FAMILY,
 		version: '1.2',
 		detail: 'Muse Spark 1.2 at ~95% off',
+		// 1M total context window (1048576) minus 128K reserved for output.
+		maxInputTokens: 917504,
+		maxOutputTokens: 131072,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Meta',
+	},
+	{
+		id: 'meta/muse-spark-1.3',
+		name: 'Muse Spark 1.3',
+		family: FAMILY,
+		version: '1.3',
+		detail: 'latest open agentic model for coding & long-horizon workflows',
+		// 1M total context window (1048576) minus 128K reserved for output.
+		maxInputTokens: 917504,
+		maxOutputTokens: 131072,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Meta',
+	},
+	{
+		id: 'meta/muse-spark-1.3-contributor',
+		name: 'Muse Spark 1.3 Contributor',
+		family: FAMILY,
+		version: '1.3',
+		detail: 'Muse Spark 1.3 at ~95% off',
 		// 1M total context window (1048576) minus 128K reserved for output.
 		maxInputTokens: 917504,
 		maxOutputTokens: 131072,
