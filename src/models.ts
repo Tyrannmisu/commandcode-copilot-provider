@@ -634,6 +634,30 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'OpenAI',
 	},
+	{
+		id: 'gpt-6-luna',
+		name: 'GPT-6 Luna',
+		family: FAMILY,
+		version: '6',
+		detail: 'most efficient OpenAI model for focused, high-volume tasks',
+		// 1.05M total context window (1050000) minus 32K reserved for output.
+		maxInputTokens: 1018000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'OpenAI',
+	},
+	{
+		id: 'gpt-6-sol',
+		name: 'GPT-6 Sol',
+		family: FAMILY,
+		version: '6',
+		detail: 'built for complex coding & agentic workflows',
+		// 1.05M total context window (1050000) minus 32K reserved for output.
+		maxInputTokens: 1018000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'OpenAI',
+	},
 
 	// ---- Poolside ----
 	{

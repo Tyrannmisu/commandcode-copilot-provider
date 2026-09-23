@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.1 (2026-09-23)
+
+### Features
+
+- **GPT-6 Luna** added to the maintained model registry — the most efficient OpenAI model for focused, high-volume tasks, with a 1.05M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+- **GPT-6 Sol** added to the maintained model registry — built for complex coding and agentic workflows, with a 1.05M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+
 ## 0.3.0 (2026-09-22)
 
 ### Features
