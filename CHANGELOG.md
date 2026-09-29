@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.2 (2026-09-29)
+
+### Features
+
+- **Claude Sonnet 5.5** added to the maintained model registry — the latest Sonnet with the best combo of speed and intelligence, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+- **Claude Opus 5.5** added to the maintained model registry — the latest and most intelligent Opus for agents and coding, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+
 ## 0.3.1 (2026-09-23)
 
 ### Features

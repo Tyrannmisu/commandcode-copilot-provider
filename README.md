@@ -15,7 +15,7 @@ Access Command Code models directly inside Copilot Chat — no new UI, no workfl
 
 ### Complete model catalog in the picker
 
-Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5, Claude Sonnet 5, GPT-5.5/5.6/6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash (incl. V4.1 Flash and Flash Vision exp), Kimi K3, Qwen 3.8 Max/Flash/Omni Flash, MiMo V2.6 Pro/Flash, GLM-5.3 & GLM-5.3 Flash, Grok 4.7, and many others. You can swap models in the middle of a conversation without resetting context.
+Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5/5.5, Claude Sonnet 5/5.5, GPT-5.5/5.6/6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash (incl. V4.1 Flash and Flash Vision exp), Kimi K3, Qwen 3.8 Max/Flash/Omni Flash, MiMo V2.6 Pro/Flash, GLM-5.3 & GLM-5.3 Flash, Grok 4.7, and many others. You can swap models in the middle of a conversation without resetting context.
 
 ### Live model discovery
 
@@ -89,7 +89,9 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | Model                              | Reasoning levels              | Vision | Ideal use case                                             |
 | ---------------------------------- | ----------------------------- | ------ | ---------------------------------------------------------- |
 | **Claude Sonnet 5**                | Off / Light / Standard / Deep | ✅     | Strong balance of speed and capability                     |
+| **Claude Sonnet 5.5**              | Off / Light / Standard / Deep | ✅     | Latest Sonnet — strong speed & capability                  |
 | **Claude Opus 5**                  | Off / Light / Standard / Deep | ✅     | Highest-capability Anthropic model                         |
+| **Claude Opus 5.5**                | Off / Light / Standard / Deep | ✅     | Latest Opus — highest-capability Anthropic model           |
 | **GPT-5.6-Luna**                   | Off / Light / Standard / Deep | ✅     | Optimized for cost-sensitive workloads                     |
 | **GPT-6 Astra**                    | Off / Light / Standard / Deep | ✅     | Most capable OpenAI model for demanding reasoning & agents |
 | **GPT-6 Luna**                     | Off / Light / Standard / Deep | ✅     | Most efficient OpenAI model for focused, high-volume tasks |
@@ -109,7 +111,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-75 models from 18 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
+77 models from 18 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
 
 ## Extension settings
 
