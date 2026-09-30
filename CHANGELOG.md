@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.3 (2026-09-30)
+
+### Features
+
+- **GPT-6.1 Sol** added to the maintained model registry — near-Astra performance for complex work at a lower cost, with a 1.05M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+- **Ling 3.1 (free)** added to the maintained model registry — a free hybrid-reasoning MoE for coding and tool-using agents with a 262K context window, surfaced with verified tool-calling and thinking-effort capabilities in the picker.
+
 ## 0.3.2 (2026-09-29)
 
 ### Features

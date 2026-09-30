@@ -387,6 +387,20 @@ export const MODELS: ModelDefinition[] = [
 		category: 'Google',
 	},
 
+	// ---- InclusionAI ----
+	{
+		id: 'inclusionai/ling-3.1-flash:free',
+		name: 'Ling 3.1 (free)',
+		family: FAMILY,
+		version: '3.1',
+		detail: 'hybrid-reasoning MoE for coding & tool-using agents',
+		// 262144 total context window minus 32K reserved for output.
+		maxInputTokens: 230144,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: false, thinking: THINKING },
+		category: 'InclusionAI',
+	},
+
 	// ---- Meituan ----
 	{
 		id: 'meituan/LongCat-2.0:free',
@@ -676,6 +690,18 @@ export const MODELS: ModelDefinition[] = [
 		family: FAMILY,
 		version: '6',
 		detail: 'built for complex coding & agentic workflows',
+		// 1.05M total context window (1050000) minus 32K reserved for output.
+		maxInputTokens: 1018000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'OpenAI',
+	},
+	{
+		id: 'gpt-6.1-sol',
+		name: 'GPT-6.1 Sol',
+		family: FAMILY,
+		version: '6.1',
+		detail: 'near-Astra performance for complex work at a lower cost',
 		// 1.05M total context window (1050000) minus 32K reserved for output.
 		maxInputTokens: 1018000,
 		maxOutputTokens: 32000,

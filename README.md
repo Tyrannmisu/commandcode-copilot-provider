@@ -96,6 +96,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GPT-6 Astra**                    | Off / Light / Standard / Deep | ✅     | Most capable OpenAI model for demanding reasoning & agents |
 | **GPT-6 Luna**                     | Off / Light / Standard / Deep | ✅     | Most efficient OpenAI model for focused, high-volume tasks |
 | **GPT-6 Sol**                      | Off / Light / Standard / Deep | ✅     | Built for complex coding & agentic workflows               |
+| **GPT-6.1 Sol**                    | Off / Light / Standard / Deep | ✅     | Near-Astra performance for complex work at lower cost      |
 | **Gemini 3.7 Flash**               | Off / Light / Standard / Deep | ✅     | Fast coding and agent-oriented tasks                       |
 | **DeepSeek V4 Pro**                | Off / Light / Standard / Deep | —      | Long-context reasoning via hybrid attention                |
 | **DeepSeek V4.1 Flash**            | Off / Light / Standard / Deep | ✅     | V4.1 hybrid-attention reasoning with vision                |
@@ -111,7 +112,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-77 models from 18 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
+79 models from 19 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
 
 ## Extension settings
 
