@@ -107,12 +107,13 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **MiMo V2.6 Pro**                  | Off / Light / Standard / Deep | ✅     | Flagship multimodal agentic coding (1.05M context)         |
 | **MiMo V2.6 Flash**                | Off / Light / Standard / Deep | ✅     | Efficient multimodal agentic coding (1.05M context)        |
 | **Kimi K3**                        | Off / Light / Standard / Deep | ✅     | 1M-token context for knowledge-heavy work                  |
+| **Mistral Large 4**                | Off / Light / Standard / Deep | ✅     | Frontier open-weight multimodal coding & analysis          |
 | **Grok 4.5**                       | Off / Light / Standard / Deep | ✅     | xAI's top model for development tasks                      |
 | **Grok 4.7**                       | Off / Light / Standard / Deep | ✅     | Coding and knowledge work, built for multi-hour tasks      |
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-79 models from 19 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
+80 models from 20 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
 
 ## Extension settings
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.4 (2026-10-07)
+
+### Features
+
+- **Mistral Large 4** added to the maintained model registry — frontier open-weight multimodal model for coding & analysis, with a 524K context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+
 ## 0.3.3 (2026-09-30)
 
 ### Features

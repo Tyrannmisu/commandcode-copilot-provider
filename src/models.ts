@@ -512,6 +512,20 @@ export const MODELS: ModelDefinition[] = [
 		category: 'MiniMax',
 	},
 
+	// ---- Mistral ----
+	{
+		id: 'mistral/mistral-large-4',
+		name: 'Mistral Large 4',
+		family: FAMILY,
+		version: '4',
+		detail: 'frontier open-weight multimodal model for coding & analysis',
+		// 524288 total context window minus 32K reserved for output.
+		maxInputTokens: 492288,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Mistral',
+	},
+
 	// ---- Moonshot AI ----
 	{
 		id: 'moonshotai/Kimi-K2.5',
