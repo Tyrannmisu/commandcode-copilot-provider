@@ -92,6 +92,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **Claude Sonnet 5.5**              | Off / Light / Standard / Deep | ✅     | Latest Sonnet — strong speed & capability                  |
 | **Claude Opus 5**                  | Off / Light / Standard / Deep | ✅     | Highest-capability Anthropic model                         |
 | **Claude Opus 5.5**                | Off / Light / Standard / Deep | ✅     | Latest Opus — highest-capability Anthropic model           |
+| **Claude Haiku 5.5**               | Off / Light / Standard / Deep | ✅     | Fastest & most compact, great for quick tasks              |
 | **GPT-5.6-Luna**                   | Off / Light / Standard / Deep | ✅     | Optimized for cost-sensitive workloads                     |
 | **GPT-6 Astra**                    | Off / Light / Standard / Deep | ✅     | Most capable OpenAI model for demanding reasoning & agents |
 | **GPT-6 Luna**                     | Off / Light / Standard / Deep | ✅     | Most efficient OpenAI model for focused, high-volume tasks |
@@ -113,7 +114,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-80 models from 20 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
+81 models from 20 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
 
 ## Extension settings
 

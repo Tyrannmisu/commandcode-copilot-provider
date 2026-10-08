@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.5 (2026-10-08)
+
+### Features
+
+- **Claude Haiku 5.5** added to the maintained model registry — the fastest and most compact Anthropic model, great for quick tasks, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker.
+
 ## 0.3.4 (2026-10-07)
 
 ### Features

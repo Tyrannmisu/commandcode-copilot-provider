@@ -182,6 +182,18 @@ export const MODELS: ModelDefinition[] = [
 		category: 'Anthropic',
 	},
 	{
+		id: 'claude-haiku-5-5',
+		name: 'Claude Haiku 5.5',
+		family: FAMILY,
+		version: 'haiku-5-5',
+		detail: 'fastest & most compact, great for quick tasks',
+		// 1M total context window (1000000) minus 64K reserved for output.
+		maxInputTokens: 936000,
+		maxOutputTokens: 64000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Anthropic',
+	},
+	{
 		id: 'claude-opus-4-7',
 		name: 'Claude Opus 4.7',
 		family: FAMILY,
