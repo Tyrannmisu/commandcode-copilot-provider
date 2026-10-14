@@ -2,7 +2,7 @@ import vscode from 'vscode';
 import { AuthManager } from '../auth';
 import { t } from '../i18n';
 import { logger } from '../logger';
-import { MODELS } from '../models';
+import { isModelVisibleForPlan, MODELS } from '../models';
 import { getLiveCatalog, liveModelToDefinition, type LiveModelInfo } from './catalog';
 import { toChatInfo } from './models';
 import type { ModelDefinition } from '../types';
@@ -49,7 +49,8 @@ export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider
 					e.affectsConfiguration('commandcode-copilot.modelBlacklist') ||
 					e.affectsConfiguration('commandcode-copilot.modelDetailStyle') ||
 					e.affectsConfiguration('commandcode-copilot.modelIdOverrides') ||
-					e.affectsConfiguration('commandcode-copilot.maxContextTokens')
+					e.affectsConfiguration('commandcode-copilot.maxContextTokens') ||
+					e.affectsConfiguration('commandcode-copilot.showModels')
 				) {
 					this.refreshModelPicker();
 				}
@@ -120,8 +121,12 @@ export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider
 		}
 
 		const hasKey = await this.authManager.hasApiKey();
-		const { getModelBlacklist } = await import('../config');
+		const { getModelBlacklist, getShowModelsFilter } = await import('../config');
 		const blacklist = new Set(getModelBlacklist());
+		// `showModels` plan filter — hides maintained registry models the
+		// selected Command Code plan doesn't include. Auto-discovered entries
+		// are never plan-filtered.
+		const planFilter = getShowModelsFilter();
 
 		// Live catalog (context windows + names), persisted across sessions
 		// and refreshed only on first run or explicit user action. It drives
@@ -147,6 +152,7 @@ export class CommandCodeChatProvider implements vscode.LanguageModelChatProvider
 
 		return [...MODELS, ...fetchedModels]
 			.filter((m) => !blacklist.has(m.id))
+			.filter((m) => m.fetched || isModelVisibleForPlan(m.id, planFilter))
 			.map((m) => toChatInfo(m, hasKey, liveCatalog.get(m.id)?.contextLength));
 	}
 

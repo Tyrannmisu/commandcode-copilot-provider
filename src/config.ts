@@ -1,5 +1,6 @@
 import vscode from 'vscode';
 import { CONFIG_SECTION, DEFAULT_BASE_URL } from './consts';
+import type { ShowModelsFilter } from './types';
 
 export type DebugMode = 'minimal' | 'metadata' | 'verbose';
 
@@ -32,6 +33,28 @@ export function getApiModelId(vscodeModelId: string): string {
 export function getModelBlacklist(): string[] {
 	const config = vscode.workspace.getConfiguration(CONFIG_SECTION);
 	return config.get<string[]>('modelBlacklist') ?? [];
+}
+
+/**
+ * Which Command Code plan's models the picker should surface.
+ *
+ * `all` (default) shows everything; `goat` / `pro` / `max` restrict the
+ * maintained registry to models the selected plan includes (Max and the
+ * pay-as-you-go Provider API cover the full catalog, so those show
+ * everything too). Auto-discovered `(fetched)` models are never filtered.
+ */
+export function getShowModelsFilter(): ShowModelsFilter {
+	const config = vscode.workspace.getConfiguration(CONFIG_SECTION);
+	const filter = config.get<string>('showModels');
+	if (
+		filter === 'goat' ||
+		filter === 'pro' ||
+		filter === 'max' ||
+		filter === 'provider'
+	) {
+		return filter;
+	}
+	return 'all';
 }
 
 /**

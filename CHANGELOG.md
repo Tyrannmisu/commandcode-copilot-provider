@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2026-10-14)
+
+### Features
+
+- **Muse Wonder** added to the maintained model registry — Meta's frontier model for coding, long-running agents and advanced computer use, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Requires a **Max** plan (or pay-as-you-go Provider API access).
+- **Gemini 4 Argon** added to the maintained model registry — multimodal reasoning for documents and agent workflows, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Requires a **Pro** plan or higher (or pay-as-you-go Provider API access).
+- **Show Models (plan filter)** — a new `commandcode-copilot.showModels` setting (default `All`) trims the picker to the models your Command Code plan includes. Pick `GOAT`, `PRO`, `MAX`, or `Provider API` and models above that plan's tier are hidden from the Copilot Chat model picker (maintained registry only — auto-discovered `(fetched)` models are always shown). `MAX` and `Provider API` surface the full catalog, since both include every model.
+
 ## 0.3.5 (2026-10-08)
 
 ### Features

@@ -36,5 +36,16 @@
     "commandcode-copilot.config.modelDetailStyle.compact.label": "Compact",
     "commandcode-copilot.config.modelDetailStyle.compact.description": "Show short capability text such as Vision · Thinking.",
     "commandcode-copilot.config.modelDetailStyle.hidden.label": "Hidden",
-    "commandcode-copilot.config.modelDetailStyle.hidden.description": "Show only the model name; the full description stays in the hover tooltip."
+    "commandcode-copilot.config.modelDetailStyle.hidden.description": "Show only the model name; the full description stays in the hover tooltip.",
+    "commandcode-copilot.config.showModels.description": "Show only the models included in your Command Code plan in the Copilot Chat model picker. Applies to the maintained model registry — auto-discovered (fetched) models are always shown.\n\n- **All** — show every model (default).\n- **GOAT** — only models included in the GOAT plan.\n- **PRO** — models included in the GOAT and Pro plans.\n- **MAX** — every model (Max plans include the full catalog).\n- **Provider API** — every model (the pay-as-you-go Provider API serves the full catalog).",
+    "commandcode-copilot.config.showModels.all.label": "All",
+    "commandcode-copilot.config.showModels.all.description": "Show every model regardless of plan.",
+    "commandcode-copilot.config.showModels.goat.label": "GOAT",
+    "commandcode-copilot.config.showModels.goat.description": "Only models included in the GOAT plan.",
+    "commandcode-copilot.config.showModels.pro.label": "PRO",
+    "commandcode-copilot.config.showModels.pro.description": "Models included in the GOAT and Pro plans.",
+    "commandcode-copilot.config.showModels.max.label": "MAX",
+    "commandcode-copilot.config.showModels.max.description": "Every model — Max plans include the full catalog.",
+    "commandcode-copilot.config.showModels.provider.label": "Provider API",
+    "commandcode-copilot.config.showModels.provider.description": "Every model — the pay-as-you-go Provider API serves the full catalog."
 }

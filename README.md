@@ -25,6 +25,18 @@ The extension fetches the current model catalog from Command Code **once**, pers
 - **New models appear automatically** — when Command Code ships a model that isn't in the bundled registry yet, it shows up in the picker on its own. Auto-discovered entries are suffixed with **"(fetched)"** so you can tell them apart; limited-time free variants (model id ending in `-free` or `:free`) are marked **"(fetched, free)"**, and the tooltip card shows the full upstream model id so they can't be confused with the paid model of the same name.
 - **Conservative defaults** — until a model is verified and added to the registry in [`src/models.ts`](src/models.ts), auto-discovered entries assume vision support, reasoning/thinking enabled, tool calling on, and an estimated output budget of ⅛ of the context window (capped at 128K tokens).
 
+### Plan-aware model list
+
+Only need the models your Command Code plan includes? The **Show Models** setting (`commandcode-copilot.showModels`) trims the picker accordingly:
+
+- **All** (default) — every model
+- **GOAT** — only models included in the GOAT plan
+- **PRO** — models included in the GOAT and Pro plans
+- **MAX** — every model (Max plans include the full catalog)
+- **Provider API** — every model (the pay-as-you-go Provider API serves the full catalog)
+
+Only maintained registry models are filtered — auto-discovered `(fetched)` entries always stay visible.
+
 ### Per-model reasoning control
 
 Models that support extended reasoning display a **Thinking effort** selector right inside the Copilot interface:
@@ -99,6 +111,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GPT-6 Sol**                      | Off / Light / Standard / Deep | ✅     | Built for complex coding & agentic workflows               |
 | **GPT-6.1 Sol**                    | Off / Light / Standard / Deep | ✅     | Near-Astra performance for complex work at lower cost      |
 | **Gemini 3.7 Flash**               | Off / Light / Standard / Deep | ✅     | Fast coding and agent-oriented tasks                       |
+| **Gemini 4 Argon**                 | Off / Light / Standard / Deep | ✅     | Multimodal reasoning for docs & agent workflows (Pro+)     |
 | **DeepSeek V4 Pro**                | Off / Light / Standard / Deep | —      | Long-context reasoning via hybrid attention                |
 | **DeepSeek V4.1 Flash**            | Off / Light / Standard / Deep | ✅     | V4.1 hybrid-attention reasoning with vision                |
 | **DeepSeek V4 Flash Vision (exp)** | Off / Light / Standard / Deep | ✅     | Fast reasoning with vision input                           |
@@ -107,6 +120,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **Qwen 3.8 Omni Flash**            | Off / Light / Standard / Deep | ✅     | Omni-modal understanding & multimedia agentic work         |
 | **MiMo V2.6 Pro**                  | Off / Light / Standard / Deep | ✅     | Flagship multimodal agentic coding (1.05M context)         |
 | **MiMo V2.6 Flash**                | Off / Light / Standard / Deep | ✅     | Efficient multimodal agentic coding (1.05M context)        |
+| **Muse Wonder**                    | Off / Light / Standard / Deep | ✅     | Frontier coding & long-running agents (Max plans)          |
 | **Kimi K3**                        | Off / Light / Standard / Deep | ✅     | 1M-token context for knowledge-heavy work                  |
 | **Mistral Large 4**                | Off / Light / Standard / Deep | ✅     | Frontier open-weight multimodal coding & analysis          |
 | **Grok 4.5**                       | Off / Light / Standard / Deep | ✅     | xAI's top model for development tasks                      |
@@ -114,21 +128,22 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-81 models from 20 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**.
+83 models from 20 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
 
 ## Extension settings
 
-| Setting                                | Default                                  | Purpose                                                                                                                                    |
-| -------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `commandcode-copilot.baseUrl`          | `https://api.commandcode.ai/provider/v1` | Base URL for API calls — override for self-hosted setups or reverse proxies                                                                |
-| `commandcode-copilot.maxTokens`        | `0`                                      | Cap on output tokens per response (`0` = unlimited). Handy for managing costs                                                              |
-| `commandcode-copilot.zdr`              | `false`                                  | Attach `x-cmd-zdr: 1` header to enforce zero-data-retention endpoint routing                                                               |
-| `commandcode-copilot.modelIdOverrides` | `{}`                                     | Remap VS Code model identifiers to alternate API identifiers (useful for mirrored deployments)                                             |
-| `commandcode-copilot.modelBlacklist`   | `[]`                                     | Exclude specific model identifiers from appearing in the selector                                                                          |
-| `commandcode-copilot.maxContextTokens` | `0`                                      | Override the context window size reported to Copilot (`0` = keep the model's native default)                                               |
-| `commandcode-copilot.modelDetailStyle` | `auto`                                   | Text shown beside model names: `auto` (compact on Linux, full elsewhere), `full`, `compact` (`Vision · Thinking`), or `hidden` (name only) |
-| `commandcode-copilot.apiKey`           | _(unset)_                                | Fallback API key location (settings-based; SecretStorage takes precedence when both are set)                                               |
-| `commandcode-copilot.debugMode`        | `minimal`                                | Logging detail: `minimal` (quiet), `metadata` (per-call summary), `verbose` (full request/response)                                        |
+| Setting                                | Default                                  | Purpose                                                                                                                                       |
+| -------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `commandcode-copilot.baseUrl`          | `https://api.commandcode.ai/provider/v1` | Base URL for API calls — override for self-hosted setups or reverse proxies                                                                   |
+| `commandcode-copilot.maxTokens`        | `0`                                      | Cap on output tokens per response (`0` = unlimited). Handy for managing costs                                                                 |
+| `commandcode-copilot.zdr`              | `false`                                  | Attach `x-cmd-zdr: 1` header to enforce zero-data-retention endpoint routing                                                                  |
+| `commandcode-copilot.modelIdOverrides` | `{}`                                     | Remap VS Code model identifiers to alternate API identifiers (useful for mirrored deployments)                                                |
+| `commandcode-copilot.modelBlacklist`   | `[]`                                     | Exclude specific model identifiers from appearing in the selector                                                                             |
+| `commandcode-copilot.maxContextTokens` | `0`                                      | Override the context window size reported to Copilot (`0` = keep the model's native default)                                                  |
+| `commandcode-copilot.modelDetailStyle` | `auto`                                   | Text shown beside model names: `auto` (compact on Linux, full elsewhere), `full`, `compact` (`Vision · Thinking`), or `hidden` (name only)    |
+| `commandcode-copilot.showModels`       | `all`                                    | Show only the models included in your Command Code plan: `all`, `goat`, `pro`, `max`, or `provider` (auto-discovered models are always shown) |
+| `commandcode-copilot.apiKey`           | _(unset)_                                | Fallback API key location (settings-based; SecretStorage takes precedence when both are set)                                                  |
+| `commandcode-copilot.debugMode`        | `minimal`                                | Logging detail: `minimal` (quiet), `metadata` (per-call summary), `verbose` (full request/response)                                           |
 
 Reasoning depth is adjusted per model through the Copilot Chat model selector.
 

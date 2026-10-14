@@ -3,7 +3,7 @@
     "displayName": "Command Code for Copilot Chat",
     "description": "Pick Command Code models from the Copilot Chat model picker. Vision, thinking mode, agent tools — zero config, BYOK.",
     "icon": "resources/icon.png",
-    "version": "0.3.5",
+    "version": "0.4.0",
     "publisher": "Tyrannmisu",
     "license": "MIT",
     "repository": {
@@ -191,6 +191,32 @@
                         "%commandcode-copilot.config.modelDetailStyle.hidden.description%"
                     ],
                     "markdownDescription": "%commandcode-copilot.config.modelDetailStyle.description%"
+                },
+                "commandcode-copilot.showModels": {
+                    "type": "string",
+                    "default": "all",
+                    "enum": [
+                        "all",
+                        "goat",
+                        "pro",
+                        "max",
+                        "provider"
+                    ],
+                    "enumItemLabels": [
+                        "%commandcode-copilot.config.showModels.all.label%",
+                        "%commandcode-copilot.config.showModels.goat.label%",
+                        "%commandcode-copilot.config.showModels.pro.label%",
+                        "%commandcode-copilot.config.showModels.max.label%",
+                        "%commandcode-copilot.config.showModels.provider.label%"
+                    ],
+                    "enumDescriptions": [
+                        "%commandcode-copilot.config.showModels.all.description%",
+                        "%commandcode-copilot.config.showModels.goat.description%",
+                        "%commandcode-copilot.config.showModels.pro.description%",
+                        "%commandcode-copilot.config.showModels.max.description%",
+                        "%commandcode-copilot.config.showModels.provider.description%"
+                    ],
+                    "markdownDescription": "%commandcode-copilot.config.showModels.description%"
                 }
             }
         }

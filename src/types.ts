@@ -126,6 +126,20 @@ export interface ThinkingCapability {
 	canDisable: boolean;
 }
 
+/**
+ * Minimum Command Code plan whose catalog includes a model. Plans are tiered
+ * (GOAT ⊂ Pro ⊂ Max), so a model at `pro` also runs on Max; the pay-as-you-go
+ * Provider API serves every model regardless of tier.
+ */
+export type ModelPlan = 'goat' | 'pro' | 'max';
+
+/**
+ * Value of the `showModels` setting: which plan's models the picker surfaces.
+ * `all` (default) and `provider` show the full catalog (Max and the Provider
+ * API are unrestricted); `goat` / `pro` / `max` hide models above that tier.
+ */
+export type ShowModelsFilter = 'all' | ModelPlan | 'provider';
+
 export interface ModelDefinition {
 	id: string;
 	name: string;

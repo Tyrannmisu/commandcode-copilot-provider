@@ -1,5 +1,11 @@
 import { FAMILY, TOOLS_LIMIT } from './consts';
-import type { ModelDefinition, ReasoningEffort, ThinkingCapability } from './types';
+import type {
+	ModelDefinition,
+	ModelPlan,
+	ReasoningEffort,
+	ShowModelsFilter,
+	ThinkingCapability,
+} from './types';
 
 /**
  * Standard capability set for OpenAI-compatible reasoning models served by
@@ -398,6 +404,18 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'Google',
 	},
+	{
+		id: 'google/gemini-4-argon',
+		name: 'Gemini 4 Argon',
+		family: FAMILY,
+		version: '4',
+		detail: 'multimodal reasoning for documents & agent workflows',
+		// 1M total context window (1000000) minus 64K reserved for output.
+		maxInputTokens: 936000,
+		maxOutputTokens: 64000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Google',
+	},
 
 	// ---- InclusionAI ----
 	{
@@ -482,6 +500,18 @@ export const MODELS: ModelDefinition[] = [
 		family: FAMILY,
 		version: '1.3',
 		detail: 'Muse Spark 1.3 at ~95% off',
+		// 1M total context window (1048576) minus 128K reserved for output.
+		maxInputTokens: 917504,
+		maxOutputTokens: 131072,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Meta',
+	},
+	{
+		id: 'meta/muse-wonder-1.0',
+		name: 'Muse Wonder',
+		family: FAMILY,
+		version: '1.0',
+		detail: 'frontier coding, long-running agents & advanced computer use',
 		// 1M total context window (1048576) minus 128K reserved for output.
 		maxInputTokens: 917504,
 		maxOutputTokens: 131072,
@@ -986,3 +1016,69 @@ export const MODELS: ModelDefinition[] = [
 		category: 'Z AI',
 	},
 ];
+
+// ---- Plan availability ----
+
+/**
+ * Minimum Command Code plan whose catalog includes a model. Any id missing
+ * from this table is part of the GOAT plan (the default `minPlan`).
+ *
+ * Plans are tiered — GOAT ⊂ Pro ⊂ Max — and the pay-as-you-go Provider API
+ * serves every model, so each entry only records the lowest tier that
+ * includes the model. Snapshot of commandcode.ai/docs/plans/{goat,pro,max}
+ * and commandcode.ai/docs/provider as of 2026-10-14 — plan rosters change
+ * with deals and new releases, so update this table when they do.
+ */
+const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {
+	// ---- Pro plan and up ----
+	'claude-haiku-4-5-20251001': 'pro',
+	'claude-sonnet-4-6': 'pro',
+	'claude-sonnet-5': 'pro',
+	'google/gemini-3.1-flash-lite': 'pro',
+	'google/gemini-3.5-flash': 'pro',
+	'google/gemini-3.5-flash-lite': 'pro',
+	'google/gemini-3.6-flash': 'pro',
+	'google/gemini-4-argon': 'pro',
+	'gpt-5.3-codex': 'pro',
+	'gpt-5.4': 'pro',
+	'gpt-5.4-mini': 'pro',
+	'gpt-5.5': 'pro',
+	'gpt-5.6-terra': 'pro',
+	'gpt-6-sol': 'pro',
+	'meta/muse-spark-1.1': 'pro',
+
+	// ---- Max plans and up ----
+	'claude-fable-5': 'max',
+	'claude-fable-5-1': 'max',
+	'claude-opus-4-7': 'max',
+	'claude-opus-4-8': 'max',
+	'claude-opus-5': 'max',
+	'claude-opus-5-5': 'max',
+	'gpt-6-astra': 'max',
+	'gpt-6.1-sol': 'max',
+	'meta/muse-wonder-1.0': 'max',
+	'sakana/fugu-ultra': 'max',
+};
+
+/** Minimum plan whose catalog includes the model (`goat` when unknown). */
+export function getModelMinPlan(id: string): ModelPlan {
+	return MIN_PLAN_BY_ID[id] ?? 'goat';
+}
+
+/**
+ * Whether a maintained registry model should appear in the picker for the
+ * `showModels` setting. `all`, `max`, and `provider` surface the full catalog
+ * — Max plans and the Provider API include every model — while `goat` and
+ * `pro` hide models above their tier. Auto-discovered `(fetched)` models are
+ * never plan-filtered; callers skip them.
+ */
+export function isModelVisibleForPlan(id: string, filter: ShowModelsFilter): boolean {
+	switch (filter) {
+		case 'goat':
+			return getModelMinPlan(id) === 'goat';
+		case 'pro':
+			return getModelMinPlan(id) !== 'max';
+		default:
+			return true;
+	}
+}
