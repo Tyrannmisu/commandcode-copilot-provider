@@ -122,13 +122,16 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **MiMo V2.6 Flash**                | Off / Light / Standard / Deep | ✅     | Efficient multimodal agentic coding (1.05M context)        |
 | **Muse Wonder**                    | Off / Light / Standard / Deep | ✅     | Frontier coding & long-running agents (Max plans)          |
 | **Kimi K3**                        | Off / Light / Standard / Deep | ✅     | 1M-token context for knowledge-heavy work                  |
+| **Kimi K3.1 Pro**                  | Off / Light / Standard / Deep | ✅     | Frontier reasoning & agentic coding (1.05M context)        |
+| **Ornith 1.5 122B**                | Off / Light / Standard / Deep | ✅     | Open-weight MoE for fast agentic coding (262K context)     |
+| **Beam 1.0 (free)**                | Off / Light / Standard / Deep | —      | Free reasoning for coding & agentic workflows              |
 | **Mistral Large 4**                | Off / Light / Standard / Deep | ✅     | Frontier open-weight multimodal coding & analysis          |
 | **Grok 4.5**                       | Off / Light / Standard / Deep | ✅     | xAI's top model for development tasks                      |
 | **Grok 4.7**                       | Off / Light / Standard / Deep | ✅     | Coding and knowledge work, built for multi-hour tasks      |
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-83 models from 20 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
+86 models from 22 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
 
 ## Extension settings
 

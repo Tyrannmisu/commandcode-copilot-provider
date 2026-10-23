@@ -624,6 +624,18 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'Moonshot AI',
 	},
+	{
+		id: 'moonshotai/Kimi-K3.1-Pro',
+		name: 'Kimi K3.1 Pro',
+		family: FAMILY,
+		version: 'k3.1',
+		detail: 'frontier reasoning & agentic coding with 1M context',
+		// 1.05M total context window (1050000) minus 32K reserved for output.
+		maxInputTokens: 1018000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Moonshot AI',
+	},
 
 	// ---- NVIDIA ----
 	{
@@ -765,6 +777,20 @@ export const MODELS: ModelDefinition[] = [
 		category: 'OpenAI',
 	},
 
+	// ---- Ornith ----
+	{
+		id: 'ornith/ornith-1.5-122b',
+		name: 'Ornith 1.5 122B',
+		family: FAMILY,
+		version: '1.5',
+		detail: 'open-weight MoE for fast agentic coding',
+		// 262K total context window (262144) minus 32K reserved for output.
+		maxInputTokens: 230144,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Ornith',
+	},
+
 	// ---- Poolside ----
 	{
 		id: 'poolside/laguna-s-2.1-free',
@@ -776,6 +802,20 @@ export const MODELS: ModelDefinition[] = [
 		maxOutputTokens: 32000,
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: false, thinking: THINKING },
 		category: 'Poolside',
+	},
+
+	// ---- Reflection ----
+	{
+		id: 'reflection/beam:free',
+		name: 'Beam 1.0 (free)',
+		family: FAMILY,
+		version: '1.0',
+		detail: 'reasoning model for coding and agentic workflows',
+		// 1.05M total context window (1050000) minus 32K reserved for output.
+		maxInputTokens: 1018000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: false, thinking: THINKING },
+		category: 'Reflection',
 	},
 
 	// ---- Sakana AI ----
@@ -1026,7 +1066,7 @@ export const MODELS: ModelDefinition[] = [
  * Plans are tiered — GOAT ⊂ Pro ⊂ Max — and the pay-as-you-go Provider API
  * serves every model, so each entry only records the lowest tier that
  * includes the model. Snapshot of commandcode.ai/docs/plans/{goat,pro,max}
- * and commandcode.ai/docs/provider as of 2026-10-14 — plan rosters change
+ * and commandcode.ai/docs/provider as of 2026-10-23 — plan rosters change
  * with deals and new releases, so update this table when they do.
  */
 const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {

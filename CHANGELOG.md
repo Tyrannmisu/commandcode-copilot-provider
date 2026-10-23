@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2026-10-23)
+
+### Features
+
+- **Kimi K3.1 Pro** added to the maintained model registry — frontier reasoning and agentic coding with a 1.05M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Included on the **GOAT** plan and above (or pay-as-you-go Provider API access).
+- **Ornith 1.5 122B** added to the maintained model registry — an open-weight MoE built for fast agentic coding with a 262K context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Included on the **GOAT** plan and above (or pay-as-you-go Provider API access).
+- **Beam 1.0 (free)** added to the maintained model registry — a free reasoning model for coding and agentic workflows with a 1.05M context window, surfaced with verified tool-calling and thinking-effort capabilities in the picker (reasoning only, no vision). Included on the **GOAT** plan and above (or pay-as-you-go Provider API access).
+
 ## 0.4.0 (2026-10-14)
 
 ### Features
