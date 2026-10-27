@@ -776,6 +776,18 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'OpenAI',
 	},
+	{
+		id: 'gpt-6.1-terra',
+		name: 'GPT-6.1 Terra',
+		family: FAMILY,
+		version: '6.1',
+		detail: 'fast, efficient model for visual reasoning, computer use & writing',
+		// 1.05M total context window (1050000) minus 32K reserved for output.
+		maxInputTokens: 1018000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'OpenAI',
+	},
 
 	// ---- Ornith ----
 	{
@@ -1085,6 +1097,7 @@ const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {
 	'gpt-5.5': 'pro',
 	'gpt-5.6-terra': 'pro',
 	'gpt-6-sol': 'pro',
+	'gpt-6.1-terra': 'pro',
 	'meta/muse-spark-1.1': 'pro',
 
 	// ---- Max plans and up ----

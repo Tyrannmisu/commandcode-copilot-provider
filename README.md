@@ -110,6 +110,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GPT-6 Luna**                     | Off / Light / Standard / Deep | ✅     | Most efficient OpenAI model for focused, high-volume tasks |
 | **GPT-6 Sol**                      | Off / Light / Standard / Deep | ✅     | Built for complex coding & agentic workflows               |
 | **GPT-6.1 Sol**                    | Off / Light / Standard / Deep | ✅     | Near-Astra performance for complex work at lower cost      |
+| **GPT-6.1 Terra**                  | Off / Light / Standard / Deep | ✅     | Fast, efficient visual reasoning & computer use (Pro+)     |
 | **Gemini 3.7 Flash**               | Off / Light / Standard / Deep | ✅     | Fast coding and agent-oriented tasks                       |
 | **Gemini 4 Argon**                 | Off / Light / Standard / Deep | ✅     | Multimodal reasoning for docs & agent workflows (Pro+)     |
 | **DeepSeek V4 Pro**                | Off / Light / Standard / Deep | —      | Long-context reasoning via hybrid attention                |

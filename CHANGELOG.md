@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.2 (2026-10-27)
+
+### Features
+
+- **GPT-6.1 Terra** added to the maintained model registry — a fast, efficient model for visual reasoning, computer use and writing, with a 1.05M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Requires a **Pro** plan or higher (or pay-as-you-go Provider API access).
+
 ## 0.4.1 (2026-10-23)
 
 ### Features
