@@ -121,6 +121,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **Qwen 3.8 Omni Flash**            | Off / Light / Standard / Deep | ✅     | Omni-modal understanding & multimedia agentic work         |
 | **MiMo V2.6 Pro**                  | Off / Light / Standard / Deep | ✅     | Flagship multimodal agentic coding (1.05M context)         |
 | **MiMo V2.6 Flash**                | Off / Light / Standard / Deep | ✅     | Efficient multimodal agentic coding (1.05M context)        |
+| **Muse Ember**                     | Off / Light / Standard / Deep | ✅     | Low-cost multimodal reasoning & agentic work (GOAT)        |
 | **Muse Wonder**                    | Off / Light / Standard / Deep | ✅     | Frontier coding & long-running agents (Max plans)          |
 | **Kimi K3**                        | Off / Light / Standard / Deep | ✅     | 1M-token context for knowledge-heavy work                  |
 | **Kimi K3.1 Pro**                  | Off / Light / Standard / Deep | ✅     | Frontier reasoning & agentic coding (1.05M context)        |
@@ -132,7 +133,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-86 models from 22 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
+88 models from 22 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
 
 ## Extension settings
 

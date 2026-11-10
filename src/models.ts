@@ -518,6 +518,18 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'Meta',
 	},
+	{
+		id: 'meta/muse-ember',
+		name: 'Muse Ember',
+		family: FAMILY,
+		version: 'ember',
+		detail: 'multimodal reasoning for conversational & agentic work',
+		// 1M total context window (1048576) minus 128K reserved for output.
+		maxInputTokens: 917504,
+		maxOutputTokens: 131072,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Meta',
+	},
 
 	// ---- MiniMax ----
 	{

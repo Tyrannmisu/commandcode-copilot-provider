@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.3 (2026-11-10)
+
+### Features
+
+- **Muse Ember** added to the maintained model registry — Meta's low-cost multimodal reasoning model for conversational and agentic work, with a 1.05M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Included on the **GOAT** plan and above (or pay-as-you-go Provider API access).
+
 ## 0.4.2 (2026-10-27)
 
 ### Features
