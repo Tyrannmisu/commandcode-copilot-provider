@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.4 (2026-11-11)
+
+### Features
+
+- **Gemini 4 Carbon** added to the maintained model registry — Google's frontier model for complex software engineering and sustained agent workflows, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Requires a **Pro** plan or higher (or pay-as-you-go Provider API access).
+- **Claude Fable 5.2** added to the maintained model registry — the most capable Fable for demanding reasoning and long-horizon agents, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Requires a **Max** plan (or pay-as-you-go Provider API access).
+
 ## 0.4.3 (2026-11-10)
 
 ### Features

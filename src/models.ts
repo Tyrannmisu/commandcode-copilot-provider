@@ -177,6 +177,18 @@ export const MODELS: ModelDefinition[] = [
 		category: 'Anthropic',
 	},
 	{
+		id: 'claude-fable-5-2',
+		name: 'Claude Fable 5.2',
+		family: FAMILY,
+		version: 'fable-5-2',
+		detail: 'most capable Fable for demanding reasoning & long-horizon agents',
+		// 1M total context window (1000000) minus 64K reserved for output.
+		maxInputTokens: 936000,
+		maxOutputTokens: 64000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Anthropic',
+	},
+	{
 		id: 'claude-haiku-4-5-20251001',
 		name: 'Claude Haiku 4.5',
 		family: FAMILY,
@@ -410,6 +422,18 @@ export const MODELS: ModelDefinition[] = [
 		family: FAMILY,
 		version: '4',
 		detail: 'multimodal reasoning for documents & agent workflows',
+		// 1M total context window (1000000) minus 64K reserved for output.
+		maxInputTokens: 936000,
+		maxOutputTokens: 64000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Google',
+	},
+	{
+		id: 'google/gemini-4-carbon',
+		name: 'Gemini 4 Carbon',
+		family: FAMILY,
+		version: '4',
+		detail: 'complex software engineering & sustained agent workflows',
 		// 1M total context window (1000000) minus 64K reserved for output.
 		maxInputTokens: 936000,
 		maxOutputTokens: 64000,
@@ -1090,7 +1114,7 @@ export const MODELS: ModelDefinition[] = [
  * Plans are tiered — GOAT ⊂ Pro ⊂ Max — and the pay-as-you-go Provider API
  * serves every model, so each entry only records the lowest tier that
  * includes the model. Snapshot of commandcode.ai/docs/plans/{goat,pro,max}
- * and commandcode.ai/docs/provider as of 2026-10-23 — plan rosters change
+ * and commandcode.ai/docs/provider as of 2026-11-11 — plan rosters change
  * with deals and new releases, so update this table when they do.
  */
 const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {
@@ -1103,6 +1127,7 @@ const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {
 	'google/gemini-3.5-flash-lite': 'pro',
 	'google/gemini-3.6-flash': 'pro',
 	'google/gemini-4-argon': 'pro',
+	'google/gemini-4-carbon': 'pro',
 	'gpt-5.3-codex': 'pro',
 	'gpt-5.4': 'pro',
 	'gpt-5.4-mini': 'pro',
@@ -1115,6 +1140,7 @@ const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {
 	// ---- Max plans and up ----
 	'claude-fable-5': 'max',
 	'claude-fable-5-1': 'max',
+	'claude-fable-5-2': 'max',
 	'claude-opus-4-7': 'max',
 	'claude-opus-4-8': 'max',
 	'claude-opus-5': 'max',

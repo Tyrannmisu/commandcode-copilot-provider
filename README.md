@@ -104,6 +104,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **Claude Sonnet 5.5**              | Off / Light / Standard / Deep | ✅     | Latest Sonnet — strong speed & capability                  |
 | **Claude Opus 5**                  | Off / Light / Standard / Deep | ✅     | Highest-capability Anthropic model                         |
 | **Claude Opus 5.5**                | Off / Light / Standard / Deep | ✅     | Latest Opus — highest-capability Anthropic model           |
+| **Claude Fable 5.2**               | Off / Light / Standard / Deep | ✅     | Most capable Fable for demanding reasoning & agents (Max)  |
 | **Claude Haiku 5.5**               | Off / Light / Standard / Deep | ✅     | Fastest & most compact, great for quick tasks              |
 | **GPT-5.6-Luna**                   | Off / Light / Standard / Deep | ✅     | Optimized for cost-sensitive workloads                     |
 | **GPT-6 Astra**                    | Off / Light / Standard / Deep | ✅     | Most capable OpenAI model for demanding reasoning & agents |
@@ -113,6 +114,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GPT-6.1 Terra**                  | Off / Light / Standard / Deep | ✅     | Fast, efficient visual reasoning & computer use (Pro+)     |
 | **Gemini 3.7 Flash**               | Off / Light / Standard / Deep | ✅     | Fast coding and agent-oriented tasks                       |
 | **Gemini 4 Argon**                 | Off / Light / Standard / Deep | ✅     | Multimodal reasoning for docs & agent workflows (Pro+)     |
+| **Gemini 4 Carbon**                | Off / Light / Standard / Deep | ✅     | Complex software engineering & sustained agent work (Pro+) |
 | **DeepSeek V4 Pro**                | Off / Light / Standard / Deep | —      | Long-context reasoning via hybrid attention                |
 | **DeepSeek V4.1 Flash**            | Off / Light / Standard / Deep | ✅     | V4.1 hybrid-attention reasoning with vision                |
 | **DeepSeek V4 Flash Vision (exp)** | Off / Light / Standard / Deep | ✅     | Fast reasoning with vision input                           |
@@ -133,7 +135,7 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-88 models from 22 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
+90 models from 22 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
 
 ## Extension settings
 
