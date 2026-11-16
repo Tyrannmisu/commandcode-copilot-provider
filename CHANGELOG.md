@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.5 (2026-11-16)
+
+### Features
+
+- **Qwen 4 Max** added to the maintained model registry — Alibaba's flagship model for coding, agentic and knowledge work, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Included on the **GOAT** plan and above (or pay-as-you-go Provider API access).
+
 ## 0.4.4 (2026-11-11)
 
 ### Features
