@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.6 (2026-11-18)
+
+### Features
+
+- **GPT-6.2 Astra** added to the maintained model registry — OpenAI's flagship for the hardest engineering and research work, with a 1.05M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Requires a **Max** plan (or pay-as-you-go Provider API access).
+- **GPT-6.2 Sol** added to the maintained model registry — an efficient, versatile OpenAI model for everyday coding, with a 1.05M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Requires a **Pro** plan or higher (or pay-as-you-go Provider API access).
+- **Tencent Hy4** and **Tencent Hy4 Flash** added to the maintained model registry — long-horizon agentic coding with image understanding and its low-cost sibling, both with a 1.02M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Included on the **GOAT** plan and above (or pay-as-you-go Provider API access).
+- **DeepSeek V4.1 Flash Ultrafast** added to the maintained model registry — an accelerated V4.1 Flash for low-latency agent loops, with a 1M context window, surfaced with verified tool-calling, native vision and thinking-effort capabilities in the picker. Included on the **GOAT** plan and above (or pay-as-you-go Provider API access).
+
 ## 0.4.5 (2026-11-16)
 
 ### Features

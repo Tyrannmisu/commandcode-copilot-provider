@@ -360,6 +360,18 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'DeepSeek',
 	},
+	{
+		id: 'deepseek/deepseek-v4.1-flash-ultrafast',
+		name: 'DeepSeek V4.1 Flash Ultrafast',
+		family: FAMILY,
+		version: 'v4.1',
+		detail: 'accelerated V4.1 Flash for low-latency agent loops',
+		// 1M total context window (1048576) minus 32K reserved for output.
+		maxInputTokens: 1016576,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'DeepSeek',
+	},
 
 	// ---- Google ----
 	{
@@ -836,6 +848,30 @@ export const MODELS: ModelDefinition[] = [
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'OpenAI',
 	},
+	{
+		id: 'gpt-6.2-astra',
+		name: 'GPT-6.2 Astra',
+		family: FAMILY,
+		version: '6.2',
+		detail: 'OpenAI flagship for the hardest engineering & research',
+		// 1.05M total context window (1050000) minus 32K reserved for output.
+		maxInputTokens: 1018000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'OpenAI',
+	},
+	{
+		id: 'gpt-6.2-sol',
+		name: 'GPT-6.2 Sol',
+		family: FAMILY,
+		version: '6.2',
+		detail: 'efficient, versatile OpenAI model for everyday coding',
+		// 1.05M total context window (1050000) minus 32K reserved for output.
+		maxInputTokens: 1018000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'OpenAI',
+	},
 
 	// ---- Ornith ----
 	{
@@ -925,6 +961,30 @@ export const MODELS: ModelDefinition[] = [
 		maxInputTokens: 230144,
 		maxOutputTokens: 32000,
 		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: false, thinking: THINKING },
+		category: 'Tencent',
+	},
+	{
+		id: 'tencent/hy4',
+		name: 'Tencent Hy4',
+		family: FAMILY,
+		version: 'hy4',
+		detail: 'long-horizon agentic coding with image understanding',
+		// 1.02M total context window (1024000) minus 32K reserved for output.
+		maxInputTokens: 992000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
+		category: 'Tencent',
+	},
+	{
+		id: 'tencent/hy4-flash',
+		name: 'Tencent Hy4 Flash',
+		family: FAMILY,
+		version: 'hy4',
+		detail: 'low-cost Hy4 for coding, reasoning & agentic work',
+		// 1.02M total context window (1024000) minus 32K reserved for output.
+		maxInputTokens: 992000,
+		maxOutputTokens: 32000,
+		capabilities: { toolCalling: TOOLS_LIMIT, imageInput: true, thinking: THINKING },
 		category: 'Tencent',
 	},
 
@@ -1126,7 +1186,7 @@ export const MODELS: ModelDefinition[] = [
  * Plans are tiered — GOAT ⊂ Pro ⊂ Max — and the pay-as-you-go Provider API
  * serves every model, so each entry only records the lowest tier that
  * includes the model. Snapshot of commandcode.ai/docs/plans/{goat,pro,max}
- * and commandcode.ai/docs/provider as of 2026-11-11 — plan rosters change
+ * and commandcode.ai/docs/provider as of 2026-11-18 — plan rosters change
  * with deals and new releases, so update this table when they do.
  */
 const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {
@@ -1147,6 +1207,7 @@ const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {
 	'gpt-5.6-terra': 'pro',
 	'gpt-6-sol': 'pro',
 	'gpt-6.1-terra': 'pro',
+	'gpt-6.2-sol': 'pro',
 	'meta/muse-spark-1.1': 'pro',
 
 	// ---- Max plans and up ----
@@ -1159,6 +1220,7 @@ const MIN_PLAN_BY_ID: Readonly<Record<string, ModelPlan>> = {
 	'claude-opus-5-5': 'max',
 	'gpt-6-astra': 'max',
 	'gpt-6.1-sol': 'max',
+	'gpt-6.2-astra': 'max',
 	'meta/muse-wonder-1.0': 'max',
 	'sakana/fugu-ultra': 'max',
 };

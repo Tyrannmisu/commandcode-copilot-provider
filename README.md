@@ -15,7 +15,7 @@ Access Command Code models directly inside Copilot Chat — no new UI, no workfl
 
 ### Complete model catalog in the picker
 
-Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5/5.5, Claude Sonnet 5/5.5, GPT-5.5/5.6/6, Gemini 3.7 Flash, DeepSeek V4 Pro/Flash (incl. V4.1 Flash and Flash Vision exp), Kimi K3, Qwen 3.8 Max/Flash/Omni Flash, Qwen 4 Max, MiMo V2.6 Pro/Flash, GLM-5.3 & GLM-5.3 Flash, Grok 4.7, and many others. You can swap models in the middle of a conversation without resetting context.
+Every model available through Command Code's provider API appears right next to built-in options in the Copilot Chat selector — including Claude Opus 5/5.5, Claude Sonnet 5/5.5, GPT-5.5/5.6/6 (incl. 6.2 Astra/Sol), Gemini 3.7 Flash, DeepSeek V4 Pro/Flash (incl. V4.1 Flash, Flash Ultrafast and Flash Vision exp), Kimi K3, Qwen 3.8 Max/Flash/Omni Flash, Qwen 4 Max, Tencent Hy4/Hy4 Flash, MiMo V2.6 Pro/Flash, GLM-5.3 & GLM-5.3 Flash, Grok 4.7, and many others. You can swap models in the middle of a conversation without resetting context.
 
 ### Live model discovery
 
@@ -112,11 +112,14 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **GPT-6 Sol**                      | Off / Light / Standard / Deep | ✅     | Built for complex coding & agentic workflows               |
 | **GPT-6.1 Sol**                    | Off / Light / Standard / Deep | ✅     | Near-Astra performance for complex work at lower cost      |
 | **GPT-6.1 Terra**                  | Off / Light / Standard / Deep | ✅     | Fast, efficient visual reasoning & computer use (Pro+)     |
+| **GPT-6.2 Astra**                  | Off / Light / Standard / Deep | ✅     | Flagship OpenAI model for hardest engineering & research   |
+| **GPT-6.2 Sol**                    | Off / Light / Standard / Deep | ✅     | Efficient versatile model for everyday coding              |
 | **Gemini 3.7 Flash**               | Off / Light / Standard / Deep | ✅     | Fast coding and agent-oriented tasks                       |
 | **Gemini 4 Argon**                 | Off / Light / Standard / Deep | ✅     | Multimodal reasoning for docs & agent workflows (Pro+)     |
 | **Gemini 4 Carbon**                | Off / Light / Standard / Deep | ✅     | Complex software engineering & sustained agent work (Pro+) |
 | **DeepSeek V4 Pro**                | Off / Light / Standard / Deep | —      | Long-context reasoning via hybrid attention                |
 | **DeepSeek V4.1 Flash**            | Off / Light / Standard / Deep | ✅     | V4.1 hybrid-attention reasoning with vision                |
+| **DeepSeek V4.1 Flash Ultrafast**  | Off / Light / Standard / Deep | ✅     | Accelerated V4.1 Flash for low latency (GOAT)              |
 | **DeepSeek V4 Flash Vision (exp)** | Off / Light / Standard / Deep | ✅     | Fast reasoning with vision input                           |
 | **Qwen 3.7 Plus**                  | Off / Light / Standard / Deep | ✅     | Cost-effective agentic development                         |
 | **Qwen 3.8 Flash**                 | Off / Light / Standard / Deep | ✅     | Fast low-cost agentic coding & reasoning                   |
@@ -133,10 +136,12 @@ The extension surfaces the full Command Code provider lineup, organized by vendo
 | **Mistral Large 4**                | Off / Light / Standard / Deep | ✅     | Frontier open-weight multimodal coding & analysis          |
 | **Grok 4.5**                       | Off / Light / Standard / Deep | ✅     | xAI's top model for development tasks                      |
 | **Grok 4.7**                       | Off / Light / Standard / Deep | ✅     | Coding and knowledge work, built for multi-hour tasks      |
+| **Tencent Hy4**                    | Off / Light / Standard / Deep | ✅     | Long-horizon agentic coding with vision (GOAT)             |
+| **Tencent Hy4 Flash**              | Off / Light / Standard / Deep | ✅     | Ultra-cheap Hy4 for coding & agentic work (GOAT)           |
 | **GLM-5.3**                        | Off / Light / Standard / Deep | —      | Frontier reasoning with 1M context                         |
 | **GLM-5.3 Flash**                  | Off / Light / Standard / Deep | —      | Fast, affordable GLM coding with 1M context                |
 
-91 models from 22 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
+96 models from 22 different providers are included — see the complete catalog in [`src/models.ts`](src/models.ts). Models Command Code adds after a release appear automatically in the picker, marked **(fetched)**. Use the **Show Models** setting to hide models your plan doesn't include.
 
 ## Extension settings
 
